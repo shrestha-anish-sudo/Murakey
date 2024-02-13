@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
+import 'package:murarkey/features/home/provider/Home_provider.dart';
 import 'package:murarkey/res/Colors.dart';
-import 'package:murarkey/features/home/services/Home_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,6 +25,7 @@ class HomeScreen extends StatelessWidget {
       if (date != null && date != dateProvider.selectedDate) {
         dateProvider.updateDate(date);
         _dateController.text = DateFormat('MMM dd, yyyy').format(date);
+        _dateController.text = _dateformatter.format(date);
       }
     }
 
@@ -53,68 +54,82 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: 'Search services and products',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search services and products',
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
               ),
+            ),
 
-              // Add functionality for searching
-            ),
-            const SizedBox(height: 16),
-            Container(
-              height: 200,
-              // Add banner widget to display custom images or videos
-            ),
-            const SizedBox(height: 16),
-            const Center(
-                child:
-                    Text('Service Categories', style: TextStyle(fontSize: 18))),
-            // Add ListView for service categories
-            const SizedBox(height: 16),
-            const Center(child: Text('Cities', style: TextStyle(fontSize: 18))),
-            // Add GridView for cities
-            const SizedBox(height: 16),
-            Row(
-              children: [
-                TextFormField(
-                  readOnly: true,
-                  controller: _dateController,
-                  style: const TextStyle(
-                    fontSize: 18,
+            // Add functionality for searching
+          ),
+          const SizedBox(height: 10),
+          Container(
+            height: 150,
+
+            // Add banner widget to display custom images or videos
+          ),
+          const SizedBox(height: 10),
+          const Center(
+              child:
+                  Text('Service Categories', style: TextStyle(fontSize: 18))),
+          // Add ListView for service categories
+          const SizedBox(height: 16),
+          const Center(child: Text('Cities', style: TextStyle(fontSize: 18))),
+          // Add GridView for cities
+          const SizedBox(height: 16),
+          Row(
+            children: [
+              GestureDetector(
+                onTap: () => _handleDatePicker(context, dateProvider),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  onTap: () => (context, dateProvider),
-                  decoration: InputDecoration(
-                      labelText: 'Date',
-                      labelStyle: TextStyle(fontSize: 18),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      )),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.calendar_month,
+                        size: 20,
+                      ),
+                      Text(
+                        'Date wise Service details',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      SizedBox(width: 10),
+                      Text(
+                        _dateController.text.isNotEmpty
+                            ? _dateController.text
+                            : _dateformatter.format(dateProvider.selectedDate),
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
-            // Add functionality for date selection
-            const SizedBox(height: 16),
-            const Text('Recommended Services', style: TextStyle(fontSize: 18)),
-            const SizedBox(height: 16),
-
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(primary: AppColor.Darkblue),
-              child: Text(
-                'See all Services',
               ),
+            ],
+          ),
+          // Add functionality for date selection
+          const SizedBox(height: 10),
+          const Text('Recommended Services', style: TextStyle(fontSize: 18)),
+          const SizedBox(height: 10),
+
+          ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(primary: AppColor.Darkblue),
+            child: Text(
+              'See all Services',
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {

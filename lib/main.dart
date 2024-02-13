@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
-import 'package:murarkey/features/home/services/Home_provider.dart';
+import 'package:murarkey/features/home/provider/Home_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          initialRoute: RoutesName.Login,
+          initialRoute: RoutesName.Home,
           onGenerateRoute: Routes.generateRoute,
         ));
   }
