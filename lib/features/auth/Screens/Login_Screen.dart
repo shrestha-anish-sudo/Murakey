@@ -1,139 +1,114 @@
 import 'package:flutter/material.dart';
-import 'package:murarkey/Utils/Routes/Routes_name.dart';
-import 'package:murarkey/res/components/Roundbutton.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:murarkey/features/auth/Services/LoginProvider.dart';
+import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-
+class LoginPage extends StatefulWidget {
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  FocusNode phoneFocusNode = FocusNode();
-  FocusNode passwordFocusNode = FocusNode();
+class _LoginPageState extends State<LoginPage> {
+
+  final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String _phoneNumber = '';
+  String _countryCode = '';
+
+  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+  FacebookLogin _facebookLogin = FacebookLogin();
+
   @override
   Widget build(BuildContext context) {
+    final loginProvider = Provider.of<LoginProvider>(context);
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
+      appBar: AppBar(
+        title: Text('Login'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                'Login',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              TextFormField(
-                controller: _phoneController,
-                keyboardType: TextInputType.emailAddress,
-                focusNode: phoneFocusNode,
-                decoration: InputDecoration(
+              InternationalPhoneNumberInput(
+                onInputChanged: (PhoneNumber number) {
+                  setState(() {
+                    _phoneNumber = number.phoneNumber!;
+                    _countryCode = number.dialCode!;
+                  });
+                },
+                inputDecoration: InputDecoration(
                   hintText: 'Phone Number',
-                  labelText: 'Phone Number',
-                  prefixIcon: Icon(Icons.phone_android),
+                  border: OutlineInputBorder(),
                 ),
-                onFieldSubmitted: (value) {},
+                selectorConfig: SelectorConfig(
+                  selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                ),
               ),
-              SizedBox(
-                height: 20,
-              ),
-              ValueListenableBuilder(
-                valueListenable: _obsecurePassword,
-                builder: (context, value, child) {
-                  return TextFormField(
-                    controller: _passwordController,
-                    obscureText: _obsecurePassword.value,
-                    focusNode: passwordFocusNode,
-                    decoration: InputDecoration(
-                      hintText: 'password',
-                      labelText: 'password',
-                      prefixIcon: Icon(Icons.lock),
-                      suffixIcon: InkWell(
-                        onTap: () {
-                          _obsecurePassword.value = !_obsecurePassword.value;
-                        },
-                        child: Icon(_obsecurePassword.value
-                            ? Icons.visibility_off_outlined
-                            : Icons.visibility),
-                      ),
-                    ),
-                  );
+              const SizedBox(height: 16),
+              TextFormField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
                 },
               ),
-              SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () {},
-                    child: Text('Forgot Password ?'),
-                  )
-                ],
-              ),
-              SizedBox(height: 30),
-              RoundButton(
-                title: 'Login',
-                onPress: () {},
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              InkWell(
-                onTap: () {
-                  print('done');
-                  Navigator.pushNamed(context, RoutesName.SignUP);
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    // Perform login with _phoneNumber and _passwordController.text
+                    print('Login pressed');
+                    print('Phone Number: $_countryCode$_phoneNumber');
+                    print('Password: ${_passwordController.text}');
+                  }
                 },
-                child: Text("Or Sign Up Using"),
+                child: Text('Login'),
               ),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                Container(
-                  padding: const EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade700),
-                  ),
-                  child: Image.asset("assets/facebook.png", width: 50),
-                ),
-                SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.all(7),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey.shade700),
-                  ),
-                  child: Image.asset("assets/google.png", width: 50),
-                ),
-              ]),
-              SizedBox(
-                height: 40,
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: _handleGoogleSignIn,
+                child: Text('Sign Up with Google'),
               ),
-              Text('Or Sign Up Using'),
-              SizedBox(
-                height: 5,
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: _handleFacebookSignIn,
+                child: Text('Sign Up with Facebook'),
               ),
-              InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, RoutesName.SignUP);
-                  },
-                  child: Text(
-                    'SIGN UP',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ))
             ],
           ),
         ),
       ),
     );
+  }
+
+
+
+  void _handleFacebookSignIn() async {
+    final result = await _facebookLogin.logIn(['email']);
+    switch (result.status) {
+      case FacebookLoginStatus.:
+        // Perform signup with Facebook
+        print('Sign up with Facebook');
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        print('Facebook login cancelled by user');
+        break;
+      case FacebookLoginStatus.error:
+        print('Error signing up with Facebook: ${result.error}');
+        break;
+    }
   }
 }

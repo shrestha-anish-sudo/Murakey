@@ -40,6 +40,9 @@ dependencies:
   http: ^1.1.0
   fluttertoast: ^8.2.4
   snackbar: ^1.0.2
+  intl_phone_number_input: ^0.7.3+1
+  google_sign_in: ^6.1.6
+  flutter_login_facebook: ^1.9.0
 
 dev_dependencies:
   flutter_test:
