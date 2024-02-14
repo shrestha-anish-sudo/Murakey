@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
+import 'package:murarkey/features/auth/provider/LoginProvider.dart';
 import 'package:murarkey/features/home/provider/Home_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => DateProvider()),
           ChangeNotifierProvider(create: (_) => BottomNavigationBarProvider()),
+          ChangeNotifierProvider(create: (_) => LoginProvider()),
           // Add other providers as needed
         ],
         child: MaterialApp(
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          initialRoute: RoutesName.Home,
+          initialRoute: RoutesName.Login,
           onGenerateRoute: Routes.generateRoute,
         ));
   }

@@ -13,21 +13,6 @@ class HomeScreen extends StatelessWidget {
     TextEditingController _dateController = TextEditingController();
 
     final DateFormat _dateformatter = DateFormat('MMM dd, YYYY');
-    void _handleDatePicker(
-        BuildContext context, DateProvider dateProvider) async {
-      TextEditingController _dateController = TextEditingController();
-      final DateTime? date = await showDatePicker(
-        context: context,
-        initialDate: dateProvider.selectedDate,
-        firstDate: DateTime(2024),
-        lastDate: DateTime(2100),
-      );
-      if (date != null && date != dateProvider.selectedDate) {
-        dateProvider.updateDate(date);
-        _dateController.text = DateFormat('MMM dd, yyyy').format(date);
-        _dateController.text = _dateformatter.format(date);
-      }
-    }
 
     final dateProvider = Provider.of<DateProvider>(context);
     final bottomNavigationBarProvider =
@@ -86,7 +71,7 @@ class HomeScreen extends StatelessWidget {
           Row(
             children: [
               GestureDetector(
-                onTap: () => _handleDatePicker(context, dateProvider),
+                onTap: () => (context, dateProvider),
                 child: Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -136,7 +121,6 @@ class HomeScreen extends StatelessWidget {
           bottomNavigationBarProvider.updateSelectedIndex(value);
         },
         currentIndex: bottomNavigationBarProvider.selectedIndex,
-
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.trolley), label: 'Cart'),
@@ -147,31 +131,6 @@ class HomeScreen extends StatelessWidget {
             label: 'Profile',
           )
         ],
-
-        // destinations: const [
-        //   NavigationDestination(icon: Icon(Icons.home), label: "Home"),
-        //   NavigationDestination(icon: Icon(Icons.trolley), label: "Cart"),
-        //   NavigationDestination(
-        //       icon: Icon(Icons.category_outlined), label: "Services"),
-        //   NavigationDestination(icon: Icon(Icons.person), label: "Profile")
-        // ],
-        // onDestinationSelected: (int selected) {
-        //   // _controller.jumpToPage(selected);
-        //   switch (selected) {
-        //     case 0:
-        //       Navigator.pushNamed(context, RoutesName.Home);
-        //       break;
-        //     case 1:
-        //       Navigator.pushReplacementNamed(context, RoutesName.Cart);
-        //       break;
-        //     case 2:
-        //       Navigator.pushNamed(context, RoutesName.Services);
-        //       break;
-        //     case 3:
-        //       Navigator.pushNamed(context, RoutesName.Profile);
-        //       break;
-        //   }
-        // },
       ),
     );
   }

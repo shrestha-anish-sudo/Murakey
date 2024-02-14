@@ -12,7 +12,7 @@ class Routes {
       case RoutesName.Home:
         return MaterialPageRoute(builder: (BuildContext) => HomeScreen());
       case RoutesName.Login:
-        return MaterialPageRoute(builder: (BuildContext) => LoginScreen());
+        return MaterialPageRoute(builder: (BuildContext) => LoginPage());
       case RoutesName.Cart:
         return MaterialPageRoute(builder: (BuildContext) => CartScreen());
       case RoutesName.Services:
