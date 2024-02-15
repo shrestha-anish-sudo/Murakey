@@ -11,9 +11,27 @@ class DateProvider with ChangeNotifier {
     _selectedDate = newDate;
     notifyListeners();
   }
+
+  void handleDatePicker(BuildContext context) async {
+    TextEditingController _dateController = TextEditingController();
+
+    final DateFormat _dateformatter = DateFormat('MMM dd, yyyy');
+
+    final DateTime? date = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2024),
+      lastDate: DateTime(2100),
+    );
+    if (date != null && date != selectedDate) {
+      updateDate(date);
+      _dateController.text = _dateformatter.format(date);
+    }
+  }
 }
 
 // BottomNavigationBarProvider Class
+
 class BottomNavigationBarProvider with ChangeNotifier {
   int _selectedIndex = 0;
 
@@ -24,22 +42,5 @@ class BottomNavigationBarProvider with ChangeNotifier {
     notifyListeners();
   }
 }
-class HomeProvider with ChangeNotifier{
-  void handleDatePicker(BuildContext context, DateProvider dateProvider) async {
-    final DateFormat _dateformatter = DateFormat('MMM dd, YYYY');
 
-    TextEditingController _dateController = TextEditingController();
-    final DateTime? date = await showDatePicker(
-      context: context,
-      initialDate: dateProvider.selectedDate,
-      firstDate: DateTime(2024),
-      lastDate: DateTime(2100),
-    );
-    if (date != null && date != dateProvider.selectedDate) {
-      dateProvider.updateDate(date);
-      _dateController.text = DateFormat('MMM dd, yyyy').format(date);
-      _dateController.text = _dateformatter.format(date);
-    }
-  }
-}
-
+class HomeProvider with ChangeNotifier {}

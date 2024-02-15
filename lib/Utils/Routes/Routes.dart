@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/features/Cart/Screens/Cart_screen.dart';
-import 'package:murarkey/features/auth/Screens/Login_Screen.dart';
-import 'package:murarkey/features/profile/screens/Profile_screens.dart';
+import 'package:murarkey/features/auth/Screens/login_screen.dart';
 import 'package:murarkey/features/auth/Screens/Signup_screen.dart';
 import 'package:murarkey/features/home/screens/home_screens.dart';
+import 'package:murarkey/features/profile/screens/Profile_screens.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -12,7 +12,7 @@ class Routes {
       case RoutesName.Home:
         return MaterialPageRoute(builder: (BuildContext) => HomeScreen());
       case RoutesName.Login:
-        return MaterialPageRoute(builder: (BuildContext) => LoginPage());
+        return MaterialPageRoute(builder: (BuildContext) => LoginScreen());
       case RoutesName.Cart:
         return MaterialPageRoute(builder: (BuildContext) => CartScreen());
       case RoutesName.Services:
