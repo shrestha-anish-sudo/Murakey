@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
+import 'package:murarkey/features/Cart/provider/cart_provider.dart';
 import 'package:murarkey/features/auth/provider/LoginProvider.dart';
 import 'package:murarkey/features/home/provider/Home_provider.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => DateProvider()),
           ChangeNotifierProvider(create: (_) => BottomNavigationBarProvider()),
           ChangeNotifierProvider(create: (_) => LoginProvider()),
+          ChangeNotifierProvider(create: (_) => CartProvider()),
           // Add other providers as needed
         ],
         child: MaterialApp(

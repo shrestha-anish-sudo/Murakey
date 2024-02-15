@@ -1,1 +1,1 @@
-const String FacebookImages = '';
+const String nepalFlagImage = "assets/images/nepalFlagImage.png";
