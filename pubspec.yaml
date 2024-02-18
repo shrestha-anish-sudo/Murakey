@@ -45,6 +45,7 @@ dependencies:
   flutter_login_facebook: ^1.9.0
   flutter_screenutil: ^5.9.0
   another_flushbar: ^1.12.30
+  badges: ^3.1.2
 
 dev_dependencies:
   flutter_test:

@@ -42,5 +42,3 @@ class BottomNavigationBarProvider with ChangeNotifier {
     notifyListeners();
   }
 }
-
-class HomeProvider with ChangeNotifier {}
