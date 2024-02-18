@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Text('Welcome back! Glad to see you, Again!'),
                   TextFormField(
                     controller: _phoneController,
                     keyboardType: TextInputType.phone,

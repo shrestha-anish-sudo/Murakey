@@ -72,11 +72,11 @@ class HomeScreen extends StatelessWidget {
                       height: 30,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        Image.asset(
-                          nepalFlagImage,
-                          height: 40,
-                          width: 40,
-                        ),
+                        // Image.asset(
+                        //   nepalFlagImage,
+                        //   height: 40,
+                        //   width: 40,
+                        // ),
                       )),
                   const SizedBox(height: 16),
                   Container(
