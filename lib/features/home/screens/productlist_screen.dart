@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:murarkey/res/Colors.dart';
+import 'package:murarkey/res/colors.dart';
 
 class ProdddductList extends StatelessWidget {
   const ProdddductList({super.key});
@@ -8,7 +8,7 @@ class ProdddductList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColor.Darkblue,
+        backgroundColor: AppColor.darkblue,
         title: Text('Product List'),
         centerTitle: true,
         actions: [

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:murarkey/res/Colors.dart';
+import 'package:murarkey/res/colors.dart';
 
 class RoundButton extends StatelessWidget {
   final String title;
@@ -18,11 +18,11 @@ class RoundButton extends StatelessWidget {
       onTap: onPress,
       child: SingleChildScrollView(
         child: Container(
-          height: 40,
-          width: 200,
+          height: 60,
+          width: 400,
           decoration: BoxDecoration(
               color: AppColor.lightPurple,
-              borderRadius: BorderRadius.circular(20)),
+              borderRadius: BorderRadius.circular(10)),
           child: Center(
             child: loading
                 ? CircularProgressIndicator(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:murarkey/features/home/provider/Home_provider.dart';
+import 'package:murarkey/features/home/provider/home_provider.dart';
 import 'package:provider/provider.dart';
 
 class CartScreen extends StatelessWidget {

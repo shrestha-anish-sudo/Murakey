@@ -2,64 +2,75 @@ import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
+import 'package:murarkey/features/auth/widget/password_text_field.dart';
+import 'package:murarkey/features/auth/widget/social_buttons.dart';
+import 'package:murarkey/res/colors.dart';
 import 'package:murarkey/res/components/Roundbutton.dart';
 
-class LoginScreen extends StatefulWidget {
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  ValueNotifier<bool> _obsecurepassword = ValueNotifier<bool>(true);
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  FocusNode _phoneFocusNode = FocusNode();
-  FocusNode _passwordFocusNode = FocusNode();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final FocusNode _phoneFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
 
-  @override
-  void dispose() {
-    _phoneController.dispose();
-    _obsecurepassword.dispose();
-    _passwordController.dispose();
-    _phoneFocusNode.dispose();
-    _passwordFocusNode.dispose();
-    super.dispose();
-  }
+  LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: SafeArea(
+    return SafeArea(
         child: Scaffold(
-          body: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  TextFormField(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Welcome back! Glad\nto see you, Again!',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                SizedBox(
+                  height: 60,
+                  child: TextFormField(
                     controller: _phoneController,
                     keyboardType: TextInputType.phone,
                     focusNode: _phoneFocusNode,
                     decoration: InputDecoration(
-                      hintText: 'Phone Number (+977)',
-                      labelText: 'Phone Number',
-                      prefixIcon: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Image.asset(
-                            nepalFlagImage,
-                            height: 20,
-                            width: 20,
-                          ),
-                          const SizedBox(
-                              width: 8),
-                        ],
-                      ),
-                    ),
+                        hintText: '(+977)',
+                        fillColor: AppColor.gray,
+                        prefixIcon: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Image.asset(
+                              nepalFlagImage,
+                              height: 40,
+                              width: 40,
+                            ),
+                            const SizedBox(width: 8),
+                          ],
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        )),
                     onFieldSubmitted: (value) {
                       Utils.fieldFocusChange(
                           context, _phoneFocusNode, _passwordFocusNode);
@@ -74,84 +85,88 @@ class _LoginScreenState extends State<LoginScreen> {
                       return null;
                     },
                   ),
-                  ValueListenableBuilder(
-                    valueListenable: _obsecurepassword,
-                    builder: (context, value, child) {
-                      return TextFormField(
-                        controller: _passwordController,
-                        obscureText: _obsecurepassword.value,
-                        focusNode: _passwordFocusNode,
-                        decoration: const InputDecoration(
-                          hintText: 'Password',
-                          labelText: 'Password',
-                          prefixIcon: Icon(Icons.lock),
-                          suffixIcon: InkWell(),
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Please enter a password';
-                          } else if (value!.length < 8) {
-                            return 'Password must be at least 8 characters';
-                          }
-                          return null;
-                        },
-                      );
-                    },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                SizedBox(
+                  height: 60,
+                  child: PasswordTextField(
+                    passwordController: _passwordController,
+                    passwordFocusNode: _passwordFocusNode,
                   ),
-                  const SizedBox(height: 10),
-                  RoundButton(
-                    title: 'Login',
-                    onPress: () {
-                      if (_formKey.currentState!.validate()) {
-                        Navigator.pushNamed(context, RoutesName.Home);
-                        print('Api hit');
-                      }
-                    },
-                  ),
-                  const SizedBox(height: .2),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('Don\'t have an account?'),
-                      const SizedBox(width: 5),
-                      GestureDetector(
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    InkWell(
                         onTap: () {
-                          // Handle sign up
+                          Navigator.pop(context, RoutesName.forgotpassword);
                         },
                         child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            color: Colors.blue,
-                          ),
+                          'Forgot password?',
+                          style: TextStyle(color: AppColor.gray),
+                        ))
+                  ],
+                ),
+                const SizedBox(height: 20),
+                RoundButton(
+                  title: 'Login',
+                  onPress: () {
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.pushNamed(context, RoutesName.home);
+                      print('Api hit');
+                    }
+                  },
+                ),
+                const SizedBox(height: 30),
+                const Text(
+                  'Or Login with',
+                  style: TextStyle(
+                    color: AppColor.gray,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Socailbutton(imagePath: facebook, onPressed: () {}),
+                    Socailbutton(imagePath: google, onPressed: () {}),
+                    Socailbutton(imagePath: apple, onPressed: () {}),
+                  ],
+                ),
+                const SizedBox(height: 80),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    const Text('Don\'t have an account?'),
+                    const SizedBox(width: 5),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesName.signup);
+                      },
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: AppColor.black,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton.icon(
-                        onPressed: () {},
-                        icon: const Icon(Icons.facebook),
-                        label: const Text('Login with Facebook'),
-                      ),
-                      const SizedBox(width: 10),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          // Handle Gmail login
-                        },
-                        icon: const Icon(Icons.mail),
-                        label: const Text('Login with Gmail'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
       ),
-    );
+    ));
   }
 }

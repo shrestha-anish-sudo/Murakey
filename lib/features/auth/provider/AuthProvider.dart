@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
-import 'package:murarkey/Utils/Utils.dart';
+import 'package:murarkey/Utils/utils.dart';
 import 'package:murarkey/repository/auth_repository.dart';
 
 class AuthViewModel with ChangeNotifier {
@@ -30,7 +30,7 @@ class AuthViewModel with ChangeNotifier {
       setLoading(false);
 
       Utils.snackBar('Login Successfully', context);
-      Navigator.pushNamed(context, RoutesName.Home);
+      Navigator.pushNamed(context, RoutesName.home);
       if (kDebugMode) {
         print(value.toString());
       }
@@ -49,7 +49,7 @@ class AuthViewModel with ChangeNotifier {
     _myRepo.signUpapi(data).then((value) {
       setSignUpLoading(false);
       Utils.snackBar('SignUp Successfully', context);
-      Navigator.pushNamed(context, RoutesName.Login);
+      Navigator.pushNamed(context, RoutesName.login);
       if (kDebugMode) {
         print(value.toString());
       }

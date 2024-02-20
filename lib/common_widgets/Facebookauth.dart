@@ -1,24 +1,15 @@
-import 'package:flutter/material.dart';
 
-class FacebookAuth extends StatefulWidget {
-  const FacebookAuth({super.key});
+// class FacebookAuth {
+//   Future<void> _loginWithFacebook() async {
+//     try {
+//       final AccessToken result = await FacebookAuth.instance.login();
 
-  @override
-  State<FacebookAuth> createState() => _FacebookAuthState();
-}
-
-class _FacebookAuthState extends State<FacebookAuth> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 30,
-      width: 200,
-      child:InkWell(
-        
-        onTap: (){}
-        
-      )
-      
-    );
-  }
-}
+//       if (result.status == LoginStatus.success) {
+//         // Successfully logged in with Facebook
+//         print('Logged in with Facebook. Token: ${result.token}');
+//       }
+//     } catch (e) {
+//       print('Error logging in with Facebook: $e');
+//     }
+//   }
+// }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:murarkey/Utils/Routes/Routes_name.dart';
+import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
-import 'package:murarkey/features/home/provider/Home_provider.dart';
-import 'package:murarkey/res/Colors.dart';
+import 'package:murarkey/features/home/provider/home_provider.dart';
+import 'package:murarkey/res/colors.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
 
           return Scaffold(
             appBar: AppBar(
-              backgroundColor: AppColor.Darkblue,
+              backgroundColor: AppColor.darkblue,
               title: Text(
                 'Murarkey',
                 style: TextStyle(fontSize: 20, color: AppColor.white),
@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.shopping_cart),
                   onPressed: () {
-                    Navigator.pushNamed(context, RoutesName.Cart);
+                    Navigator.pushNamed(context, RoutesName.cart);
                   },
                 ),
                 IconButton(
@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
                   TextField(
                     decoration: InputDecoration(
                       hintText: 'Search services and products',
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Container(
-                    color: AppColor.Darkblue,
+                    color: AppColor.darkblue,
                     height: 130,
                     // Add banner widget to display custom images or videos
                   ),
@@ -70,14 +70,7 @@ class HomeScreen extends StatelessWidget {
                   Container(
                       width: 30,
                       height: 30,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        Image.asset(
-                          nepalFlagImage,
-                          height: 40,
-                          width: 40,
-                        ),
-                      )),
+                     ),
                   const SizedBox(height: 16),
                   Container(
                     height: 50,
@@ -85,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                        color: AppColor.Darkblue,
+                        color: AppColor.darkblue,
                       ),
                     ),
                     child: Row(
@@ -110,7 +103,7 @@ class HomeScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                  color: AppColor.Darkblue,
+                                  color: AppColor.darkblue,
                                   width: 1), // Adjust border width as needed
                               borderRadius: BorderRadius.circular(
                                   10), // Adjust the circular radius as needed
