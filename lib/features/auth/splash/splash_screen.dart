@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:murarkey/Utils/Routes/routes_name.dart';
+import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -10,7 +10,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
