@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:murarkey/Utils/utils.dart';
 import 'package:murarkey/features/auth/provider/passwordProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -38,9 +39,9 @@ class PasswordTextField extends StatelessWidget {
         obscureText: passwordVisibilityNotifier.obscurePassword,
         validator: (value) {
           if (value!.isEmpty) {
-            return 'Please enter a password';
-          } else if (value!.length < 8) {
-            return 'Password must be at least 8 characters';
+            Utils.toastMessage('Please enter a password');
+          } else if (value.length < 8) {
+            Utils.toastMessage('Password must be at least 8 characters');
           }
           return null;
         },

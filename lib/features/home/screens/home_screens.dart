@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
-import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
 import 'package:murarkey/res/colors.dart';
 import 'package:provider/provider.dart';
@@ -9,8 +8,6 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    DateTime _date = DateTime.now();
-
     TextEditingController _dateController = TextEditingController();
 
     final DateFormat _dateformatter = DateFormat('MMM dd, yyyy');

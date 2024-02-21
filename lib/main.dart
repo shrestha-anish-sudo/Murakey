@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Routes/routes.dart';
 import 'package:murarkey/features/Cart/provider/cart_provider.dart';
-import 'package:murarkey/features/auth/provider/loginProvider.dart';
+import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/provider/passwordProvider.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
 import 'package:provider/provider.dart';

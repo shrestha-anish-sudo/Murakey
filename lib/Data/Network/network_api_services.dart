@@ -53,7 +53,7 @@ class NetworkApiService extends BaseApiServices {
         throw UnauthorizedExcpetion(response.body.toString());
       default:
         throw FetchDataException(
-            'Error accured while communicating with server' +
+            'Error occured while communicating with server' +
                 'with status code' +
                 response.statusCode.toString());
     }

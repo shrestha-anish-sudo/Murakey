@@ -26,29 +26,28 @@ class Utils {
   }
 
   static void flushBarErrorMessage(String message, BuildContext context) {
-    showFlushbar(
-      context: context,
-      flushbar: Flushbar(
-        forwardAnimationCurve: Curves.decelerate,
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        padding: EdgeInsets.all(15),
-        message: message,
-        duration: Duration(seconds: 3),
-        borderRadius: BorderRadius.circular(8),
-        flushbarPosition: FlushbarPosition.TOP,
-        backgroundColor: Colors.red,
-        reverseAnimationCurve: Curves.easeInOut,
-        positionOffset: 20,
-        icon: const Icon(
-          Icons.error,
-          size: 28,
-          color: Colors.white,
-        ),
-      )..show(context),
-    );
+    showFlushbar(message,
+        context: context,
+        flushbar: Flushbar(
+          forwardAnimationCurve: Curves.decelerate,
+          margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          padding: EdgeInsets.all(15),
+          message: message,
+          duration: Duration(seconds: 3),
+          borderRadius: BorderRadius.circular(8),
+          flushbarPosition: FlushbarPosition.TOP,
+          backgroundColor: Colors.red,
+          reverseAnimationCurve: Curves.easeInOut,
+          positionOffset: 20,
+          icon: const Icon(
+            Icons.error,
+            size: 28,
+            color: Colors.white,
+          ),
+        ));
   }
 
-  static void showFlushbar(
+  static void showFlushbar(String s,
       {required BuildContext context, required Flushbar flushbar}) {
     flushbar.show(context);
   }

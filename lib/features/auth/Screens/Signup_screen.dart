@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
+import 'package:murarkey/features/auth/provider/passwordProvider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/res/colors.dart';
 import 'package:murarkey/res/components/Roundbutton.dart';
+import 'package:provider/provider.dart';
 
 class SignUp extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -21,6 +23,8 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final passwordVisibilityNotifier = Provider.of<Passwordvisibility>(context);
+
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
@@ -32,7 +36,25 @@ class SignUp extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 20),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    widthFactor: 13,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesName.login);
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.black, // Set your desired color
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,11 +85,8 @@ class SignUp extends StatelessWidget {
                         ),
                       ),
                       onFieldSubmitted: (value) {
-                        Utils.fieldFocusChange(
-                          context,
-                          _nameFocusNode,
-                          _phoneFocusNode,
-                        );
+                        Utils.flushBarErrorMessage(
+                            'please enter you username', context);
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -111,10 +130,12 @@ class SignUp extends StatelessWidget {
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter phone number';
+                          Utils.flushBarErrorMessage(
+                              'Please enter phone number', context);
                         } else if (!RegExp(r'^(\+977|0|98)([1-9]\d{8})$')
                             .hasMatch(value)) {
-                          return 'Please enter a valid phone number';
+                          Utils.toastMessage(
+                              'Please enter a valid phone number');
                         }
                         return null;
                       },
@@ -141,16 +162,25 @@ class SignUp extends StatelessWidget {
                       focusNode: _confirmPasswordFocusNode,
                       decoration: InputDecoration(
                         hintText: 'Confirm Password',
-                        prefixIcon: const Icon(Icons.lock),
+                        prefixIcon: const Icon(Icons.security_outlined),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            passwordVisibilityNotifier
+                                .togglePasswordVisibility();
+                          },
+                          child: Icon(passwordVisibilityNotifier.obscurePassword
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter confirm password';
+                          Utils.toastMessage('Please enter confirm password');
                         } else if (value != _passwordController.text) {
-                          return 'Passwords do not match';
+                          Utils.toastMessage('Passwords do not match');
                         }
                         return null;
                       },
@@ -158,23 +188,6 @@ class SignUp extends StatelessWidget {
                   ),
                   const SizedBox(
                     height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pushNamed(
-                            context,
-                            RoutesName.forgotpassword,
-                          );
-                        },
-                        child: const Text(
-                          'Forgot password?',
-                          style: TextStyle(color: AppColor.gray),
-                        ),
-                      ),
-                    ],
                   ),
                   const SizedBox(height: 20),
                   RoundButton(
@@ -195,7 +208,7 @@ class SignUp extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 25,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -205,7 +218,7 @@ class SignUp extends StatelessWidget {
                       Socailbutton(imagePath: apple, onPressed: () {}),
                     ],
                   ),
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 40),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,

@@ -29,11 +29,33 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  widthFactor: 13,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, RoutesName.welcome);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.black, // Set your desired color
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      SizedBox(
+                        height: 20,
+                      ),
                       Text(
                         'Welcome back! Glad\nto see you, Again!',
                         style: TextStyle(
@@ -70,6 +92,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
+                          
                         )),
                     onFieldSubmitted: (value) {
                       Utils.fieldFocusChange(
@@ -77,10 +100,12 @@ class LoginScreen extends StatelessWidget {
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter phone number';
+                        Utils.flushBarErrorMessage(
+                            'Please enter phone number', context);
                       } else if (!RegExp(r'^(\+977|0|98)([1-9]\d{8})$')
                           .hasMatch(value)) {
-                        return 'Please enter a valid phone number';
+                        Utils.snackBar(
+                            'Please enter a valid phone number', context);
                       }
                       return null;
                     },
@@ -141,12 +166,18 @@ class LoginScreen extends StatelessWidget {
                     Socailbutton(imagePath: apple, onPressed: () {}),
                   ],
                 ),
-                const SizedBox(height: 80),
+                const SizedBox(height: 105),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text('Don\'t have an account?'),
+                    const Text(
+                      'Don\'t have an account?',
+                      style: TextStyle(
+                        color: AppColor.gray,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     const SizedBox(width: 5),
                     GestureDetector(
                       onTap: () {
