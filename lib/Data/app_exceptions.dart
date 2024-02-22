@@ -1,32 +1,36 @@
 class AppException implements Exception {
+  // ignore: prefer_typing_uninitialized_variables
   final _message;
+  // ignore: prefer_typing_uninitialized_variables
   final _prefix;
+
   AppException([this._message, this._prefix]);
+
+  @override
   String toString() {
-    return "$_prefix$_message";
+    return '$_message$_prefix';
   }
 }
 
 class FetchDataException extends AppException {
-  FetchDataException([String? messages])
-      : super(messages, 'Error during Communication');
+  FetchDataException([String? message])
+      : super(message, 'Error During Communication');
 }
 
 class BadRequestException extends AppException {
-  BadRequestException([String? messages]) : super(messages, 'Invalid Request');
+  BadRequestException([String? message]) : super(message, 'Invalid request');
 }
 
-class NotFoundException extends AppException {
-  NotFoundException([String? messages])
-      : super(messages, 'Resources not found');
-}
-
-class UnauthorizedExcpetion extends AppException {
-  UnauthorizedExcpetion([String? messages])
-      : super(messages, 'Unauthorized Request');
+class UnauthorisedException extends AppException {
+  UnauthorisedException([String? message])
+      : super(message, 'Unauthorised request');
 }
 
 class InvalidInputException extends AppException {
-  InvalidInputException([String? messages])
-      : super(messages, 'Invalid Request');
+  InvalidInputException([String? message]) : super(message, 'Invalid Input');
+}
+
+class NoInternetException extends AppException {
+  NoInternetException([String? message])
+      : super(message, 'No Internet Connection');
 }

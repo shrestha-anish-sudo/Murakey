@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
-import 'package:murarkey/features/auth/provider/passwordProvider.dart';
+import 'package:murarkey/features/auth/provider/password_provider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/res/colors.dart';
@@ -90,7 +90,7 @@ class SignUp extends StatelessWidget {
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please enter your full name';
+                          Utils.toastMessage('Please enter your full name');
                         }
                         return null;
                       },
@@ -165,10 +165,9 @@ class SignUp extends StatelessWidget {
                         prefixIcon: const Icon(Icons.security_outlined),
                         suffixIcon: InkWell(
                           onTap: () {
-                            passwordVisibilityNotifier
-                                .togglePasswordVisibility();
+                            passwordVisibilityNotifier.toggleVisibility();
                           },
-                          child: Icon(passwordVisibilityNotifier.obscurePassword
+                          child: Icon(passwordVisibilityNotifier.isvisible
                               ? Icons.visibility_off_outlined
                               : Icons.visibility_outlined),
                         ),
@@ -194,7 +193,7 @@ class SignUp extends StatelessWidget {
                     title: 'SignUp',
                     onPress: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.pushNamed(context, RoutesName.home);
+                        Navigator.pushNamed(context, RoutesName.login);
                         print('Api hit');
                       }
                     },

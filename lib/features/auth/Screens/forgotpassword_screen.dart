@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
+import 'package:murarkey/Utils/utils.dart';
 import 'package:murarkey/res/colors.dart';
 import 'package:murarkey/res/components/Roundbutton.dart';
 
@@ -78,10 +79,10 @@ class Forgotpassword extends StatelessWidget {
                 // },
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter phone number';
+                    Utils.toastMessage('Please enter phone number');
                   } else if (!RegExp(r'^(\+977|0|98)([1-9]\d{8})$')
                       .hasMatch(value)) {
-                    return 'Please enter a valid phone number';
+                    Utils.toastMessage('Please enter a valid phone number');
                   }
                   return null;
                 },

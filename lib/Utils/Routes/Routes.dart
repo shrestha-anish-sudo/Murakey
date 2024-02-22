@@ -13,7 +13,7 @@ class Routes {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesName.home:
-        return _pageRoute(HomeScreen());
+        return _pageRoute(const Homescreen());
       case RoutesName.login:
         return _pageRoute(LoginScreen());
       case RoutesName.cart:

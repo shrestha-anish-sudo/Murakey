@@ -4,7 +4,7 @@ import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/utils.dart';
 import 'package:murarkey/repository/auth_repository.dart';
 
-class AuthViewModel with ChangeNotifier {
+class AuthProvider with ChangeNotifier {
   final _myRepo = AuthRepository();
 
   bool _loading = false;

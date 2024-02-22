@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/utils.dart';
-import 'package:murarkey/features/auth/provider/passwordProvider.dart';
+import 'package:murarkey/features/auth/provider/password_provider.dart';
 import 'package:provider/provider.dart';
 
 class PasswordTextField extends StatelessWidget {

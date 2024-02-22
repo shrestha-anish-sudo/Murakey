@@ -3,7 +3,7 @@ import 'package:murarkey/Data/Network/network_api_services.dart';
 import 'package:murarkey/res/app_url.dart';
 
 class AuthRepository {
-  BaseApiServices _apiServices = NetworkApiService();
+  final BaseApiServices _apiServices = NetworkApiService();
   Future<dynamic> LoginApi(dynamic data) async {
     try {
       dynamic response =
