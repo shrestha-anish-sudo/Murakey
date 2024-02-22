@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:murarkey/Data/Network/base_api_services.dart';
 import 'package:murarkey/Data/app_exceptions.dart';
 
-abstract class NetworkApiService implements BaseApiServices {
+class NetworkApiService implements BaseApiServices {
   Future<dynamic> getGetApiResponse(String url, data) async {
     if (kDebugMode) {
       print(url);
@@ -73,5 +73,10 @@ abstract class NetworkApiService implements BaseApiServices {
         throw FetchDataException(
             'Error occured while communicating with server');
     }
+  }
+
+  @override
+  Future getApiResponse(String url, data) {
+    throw UnimplementedError();
   }
 }

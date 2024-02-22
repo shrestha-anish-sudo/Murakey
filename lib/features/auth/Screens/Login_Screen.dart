@@ -3,6 +3,7 @@ import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
+import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/res/colors.dart';
@@ -21,6 +22,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authview = Provider.of<AuthProvider>(context);
+    final loginview = Provider.of<Loginprovider>(context);
 
     return SafeArea(
         child: Scaffold(
@@ -80,24 +82,24 @@ class LoginScreen extends StatelessWidget {
                     keyboardType: TextInputType.phone,
                     focusNode: _phoneFocusNode,
                     decoration: InputDecoration(
-                        hintText: '(+977)',
-                        fillColor: AppColor.gray,
-                        prefixIcon: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Image.asset(
-                              nepalFlagImage,
-                              height: 40,
-                              width: 40,
-                            ),
-                            const SizedBox(width: 8),
-                          ],
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        ),
+                      hintText: '(+977)',
+                      fillColor: AppColor.gray,
+                      prefixIcon: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Image.asset(
+                            nepalFlagImage,
+                            height: 40,
+                            width: 40,
+                          ),
+                          const SizedBox(width: 8),
+                        ],
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
                     onFieldSubmitted: (value) {
                       Utils.fieldFocusChange(
                           context, _phoneFocusNode, _passwordFocusNode);
@@ -144,17 +146,17 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 RoundButton(
                   title: 'Login',
-                  loading: authview.loading,
+                  loading: loginview.loginLoading,
                   onPress: () {
                     if (_formKey.currentState!.validate()) {
                       Navigator.pushNamed(context, RoutesName.home);
                       print('Api hit');
                     } else {
-                       Map data = {
-                        'Phonenumber': authview.(Phonenumber).toString(),
-                        'password': authview.(password).toString(),
+                      Map data = {
+                        'Phonenumber': loginview.phoneNumber.toString(),
+                        'password': loginview.password.toString(),
                       };
-                      authview.loginApi(data,context).then((value) {
+                      authview.loginApi(data, context).then((value) {
                         // Navigator.pushNamed(context, RoutesName.home);
                       }).onError((error, stackTrace) {
                         Utils.flushBarErrorMessage(error.toString(), context);

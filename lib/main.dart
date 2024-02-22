@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Routes/routes.dart';
 import 'package:murarkey/features/Cart/provider/cart_provider.dart';
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => DateProvider()),
           ChangeNotifierProvider(create: (_) => BottomNavigationBarProvider()),
-          ChangeNotifierProvider(create: (_) => Loginprovider()),
+          ChangeNotifierProvider(
+              create: (_) => Loginprovider()),
           ChangeNotifierProvider(create: (_) => CartProvider()),
           ChangeNotifierProvider(create: (_) => Passwordvisibility()),
           ChangeNotifierProvider(create: (_) => AuthProvider()),
