@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/res/colors.dart';
-import 'package:murarkey/res/components/Roundbutton.dart';
+import 'package:murarkey/res/components/round_button.dart';
 
 class Welcomescreen extends StatelessWidget {
   const Welcomescreen({super.key});
@@ -65,7 +65,10 @@ class Welcomescreen extends StatelessWidget {
               left: 124,
               right: 50,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  print("guest");
+                  Navigator.pushNamed(context, RoutesName.home);
+                },
                 child: const Text(
                   'Continue as a guest',
                   style: TextStyle(

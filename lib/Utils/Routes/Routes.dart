@@ -4,6 +4,7 @@ import 'package:murarkey/features/Cart/Screens/Cart_screen.dart';
 import 'package:murarkey/features/auth/Screens/Login_Screen.dart';
 import 'package:murarkey/features/auth/Screens/Signup_screen.dart';
 import 'package:murarkey/features/auth/Screens/forgotpassword_screen.dart';
+import 'package:murarkey/features/auth/Screens/otp_screen.dart';
 import 'package:murarkey/features/auth/Screens/welcome_screen.dart';
 import 'package:murarkey/features/auth/splash/splash_screen.dart';
 import 'package:murarkey/features/home/screens/home_screens.dart';
@@ -13,7 +14,7 @@ class Routes {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesName.home:
-        return _pageRoute(const Homescreen());
+        return _pageRoute(Homescreen());
       case RoutesName.login:
         return _pageRoute(LoginScreen());
       case RoutesName.cart:
@@ -28,6 +29,8 @@ class Routes {
         return _pageRoute(const Forgotpassword());
       case RoutesName.welcome:
         return _pageRoute(const Welcomescreen());
+      case RoutesName.otpscreen:
+        return _pageRoute(const Otpscreen());
     }
     return null;
   }

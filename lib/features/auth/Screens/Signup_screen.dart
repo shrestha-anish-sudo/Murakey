@@ -6,7 +6,7 @@ import 'package:murarkey/features/auth/provider/password_provider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/res/colors.dart';
-import 'package:murarkey/res/components/Roundbutton.dart';
+import 'package:murarkey/res/components/round_button.dart';
 import 'package:provider/provider.dart';
 
 class SignUp extends StatelessWidget {
@@ -84,13 +84,13 @@ class SignUp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      onFieldSubmitted: (value) {
-                        Utils.flushBarErrorMessage(
-                            'please enter you username', context);
-                      },
+                      // onFieldSubmitted: (value) {
+                      //   Utils.flushBarErrorMessage(
+                      //       'please enter you username', context);
+                      // },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          Utils.toastMessage('Please enter your full name');
+                          Utils.toastMessage('please enter your username');
                         }
                         return null;
                       },
@@ -134,8 +134,9 @@ class SignUp extends StatelessWidget {
                               'Please enter phone number', context);
                         } else if (!RegExp(r'^(\+977|0|98)([1-9]\d{8})$')
                             .hasMatch(value)) {
-                          Utils.toastMessage(
-                              'Please enter a valid phone number');
+                          return null;
+                        } else {
+                          Utils.toastMessage('Please enter valid Phone number');
                         }
                         return null;
                       },
@@ -158,7 +159,7 @@ class SignUp extends StatelessWidget {
                     height: 60,
                     child: TextFormField(
                       controller: _confirmPasswordController,
-                      obscureText: true,
+                      obscureText: passwordVisibilityNotifier.isvisible,
                       focusNode: _confirmPasswordFocusNode,
                       decoration: InputDecoration(
                         hintText: 'Confirm Password',
@@ -193,7 +194,7 @@ class SignUp extends StatelessWidget {
                     title: 'SignUp',
                     onPress: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.pushNamed(context, RoutesName.login);
+                        // Navigator.pushNamed(context, RoutesName.login);
                         print('Api hit');
                       }
                     },

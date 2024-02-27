@@ -1,37 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-// DateProvider Class
-class DateProvider with ChangeNotifier {
-  DateTime _selectedDate = DateTime.now();
+class TabSelectionNotifier extends ChangeNotifier {
+  int _selectedIndex = 0;
 
-  DateTime get selectedDate => _selectedDate;
+  int get selectedIndex => _selectedIndex;
 
-  void updateDate(DateTime newDate) {
-    _selectedDate = newDate;
+  void setTabIndex(int index) {
+    _selectedIndex = index;
     notifyListeners();
   }
+}
+class ImageEnlargeNotifier extends ChangeNotifier {
+  bool _isImageEnlarged = false;
 
-  void handleDatePicker(BuildContext context) async {
-    TextEditingController _dateController = TextEditingController();
+  bool get isImageEnlarged => _isImageEnlarged;
 
-    final DateFormat _dateformatter = DateFormat('MMM dd, yyyy');
-
-    final DateTime? date = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2024),
-      lastDate: DateTime(2100),
-    );
-    if (date != null && date != selectedDate) {
-      updateDate(date);
-      _dateController.text = _dateformatter.format(date);
-    }
+  void toggleImageSize() {
+    _isImageEnlarged = !_isImageEnlarged;
+    notifyListeners();
   }
 }
-
-// BottomNavigationBarProvider Class
-
 class BottomNavigationBarProvider with ChangeNotifier {
   int _selectedIndex = 0;
 

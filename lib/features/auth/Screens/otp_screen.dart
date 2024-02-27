@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/features/auth/widget/otp_textfield.dart';
-import 'package:murarkey/res/Colors.dart';
+import 'package:murarkey/res/colors.dart';
+import 'package:murarkey/res/components/round_button.dart';
 
 class Otpscreen extends StatelessWidget {
   const Otpscreen({super.key});
@@ -46,7 +47,9 @@ class Otpscreen extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          OtpTextField(onChanged: (p0) {}, index: 12)
+          OtpTextField(onChanged: (p0) {}, index: 12),
+          const SizedBox(height: 30),
+          RoundButton(title: 'Verify', onPress: () {})
         ],
       ),
     );

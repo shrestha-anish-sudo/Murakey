@@ -8,4 +8,5 @@ class RoutesName {
   static const String profile = 'Profile_screen';
   static const String forgotpassword = 'Forgot_Password_screen';
   static const String welcome = 'Welcome_screen';
+  static const String otpscreen = 'otp_screen';
 }

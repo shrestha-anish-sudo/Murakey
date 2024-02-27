@@ -4,9 +4,9 @@ import 'package:murarkey/repository/auth_repository.dart';
 
 class Loginprovider with ChangeNotifier {
 
-  // AuthRepository authRepository;
+  AuthRepository authRepository;
   
-  // Loginprovider({required this.authRepository});
+  Loginprovider({required this.authRepository});
 
   bool _loginLoading = false;
   bool get loginLoading => _loginLoading;
@@ -32,19 +32,19 @@ class Loginprovider with ChangeNotifier {
     _password = password;
   }
 
-  // Future<UserModel> loginApi(dynamic data) async {
-  //   try {
-  //     setLoginLoading(true);
-  //     final response = await authRepository.LoginApi(data);
-  //     // await SessionController().saveUserInPreference(response);
-  //     // await SessionController().getUserFromPreference();
-  //     setLoginLoading(false);
-  //     return response;
-  //   } catch (e) {
-  //     setLoginLoading(false);
-  //     throw Exception(e);
-  //   }
-  // }
+  Future<UserModel> loginApi(dynamic data) async {
+    try {
+      setLoginLoading(true);
+      final response = await authRepository.LoginApi(data);
+      // await SessionController().saveUserInPreference(response);
+      // await SessionController().getUserFromPreference();
+      setLoginLoading(false);
+      return response;
+    } catch (e) {
+      setLoginLoading(false);
+      throw Exception(e);
+    }
+  }
 }
 
 

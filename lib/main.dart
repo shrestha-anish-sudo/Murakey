@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:get_it/get_it.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Routes/routes.dart';
 import 'package:murarkey/features/Cart/provider/cart_provider.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
 import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/provider/password_provider.dart';
+import 'package:murarkey/features/home/provider/favroite_provider.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
+import 'package:murarkey/features/home/provider/product_provider.dart';
 import 'package:provider/provider.dart';
 
+GetIt getIt = GetIt.instance;
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // getIt.registerLazySingleton<AuthRepository>(() => AuthHttpApiRepository());
   runApp(MyApp());
 }
 
@@ -18,17 +24,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => DateProvider()),
           ChangeNotifierProvider(create: (_) => BottomNavigationBarProvider()),
           ChangeNotifierProvider(
-              create: (_) => Loginprovider()),
+              create: (_) => Loginprovider(authRepository: getIt())),
           ChangeNotifierProvider(create: (_) => CartProvider()),
           ChangeNotifierProvider(create: (_) => Passwordvisibility()),
           ChangeNotifierProvider(create: (_) => AuthProvider()),
+          ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+          ChangeNotifierProvider(create: (_) => ProductProvider()),
+          ChangeNotifierProvider(create: (_) => TabSelectionNotifier()),
+          ChangeNotifierProvider(create: (_) => ImageEnlargeNotifier()),
+
+          
+
+
+
+
           // Add other providers as needed
         ],
         child: MaterialApp(
-          title: 'Your App Name',
+          title: 'Murakey',
           theme: ThemeData(
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,

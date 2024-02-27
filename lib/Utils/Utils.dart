@@ -18,6 +18,7 @@ class Utils {
   }
 
   static void toastMessage(String message) {
+    Fluttertoast.cancel();
     Fluttertoast.showToast(
       msg: message,
       backgroundColor: Colors.black,
