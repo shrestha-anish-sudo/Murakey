@@ -13,3 +13,7 @@ const String f4 = "assets/images/F4.png";
 const String p1 = "assets/images/P1.jpg";
 const String p2 = "assets/images/P2.png";
 const String p3 = "assets/images/P3.png";
+const String c1 = "assets/images/C1.png";
+const String c2 = "assets/images/C2.png";
+const String facial = "assets/images/facial.png";
+const String ladybg = "assets/images/ladybg.jpg";

@@ -21,10 +21,7 @@ class SLider extends StatelessWidget {
           height: 130,
           // Set the desired height
           enlargeCenterPage: true,
-          autoPlay: true,
-          autoPlayInterval: Duration(seconds: 2),
-          autoPlayAnimationDuration: Duration(milliseconds: 800),
-          autoPlayCurve: Curves.fastOutSlowIn,
+          autoPlay: false,
           enableInfiniteScroll: true,
           viewportFraction: 0.8,
         ),

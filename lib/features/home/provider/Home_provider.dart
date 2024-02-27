@@ -10,6 +10,7 @@ class TabSelectionNotifier extends ChangeNotifier {
     notifyListeners();
   }
 }
+
 class ImageEnlargeNotifier extends ChangeNotifier {
   bool _isImageEnlarged = false;
 
@@ -20,6 +21,7 @@ class ImageEnlargeNotifier extends ChangeNotifier {
     notifyListeners();
   }
 }
+
 class BottomNavigationBarProvider with ChangeNotifier {
   int _selectedIndex = 0;
 
@@ -28,5 +30,28 @@ class BottomNavigationBarProvider with ChangeNotifier {
   void updateSelectedIndex(int newIndex) {
     _selectedIndex = newIndex;
     notifyListeners();
+  }
+}
+
+class ImageGalleryState extends ChangeNotifier {
+  int currentIndex = 0;
+
+  void setIndex(int index) {
+    currentIndex = index;
+    notifyListeners();
+  }
+
+  void moveToNext(List<String> images) {
+    if (currentIndex < images.length - 1) {
+      currentIndex++;
+      notifyListeners();
+    }
+  }
+
+  void moveToPrevious() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      notifyListeners();
+    }
   }
 }

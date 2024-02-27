@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/res/colors.dart';
 
-Widget buildProductItem(
-    BuildContext context, String name, String imagePath, String topRightText) {
+Widget buildProductItem(BuildContext context, String name, String imagePath,
+    String topRightText, VoidCallback onPressed) {
   return Container(
-    // height: 500,
+    // height: double.infinity,
+
     width: 150.0, // Adjust the width as needed
     margin: const EdgeInsets.all(8.0),
     decoration: BoxDecoration(
@@ -17,8 +18,9 @@ Widget buildProductItem(
       children: [
         // Product Image
         Container(
-          height: 140.0, // Set the height as needed
+          height: 150.0, // Set the height as needed
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
             image: DecorationImage(
               image: AssetImage(imagePath),
               fit: BoxFit.cover,
@@ -39,6 +41,14 @@ Widget buildProductItem(
             ),
           ),
         ),
+        // Positioned(
+        //   bottom: 8.0,
+        //   right: 8.0,
+        //   child: IconButton(
+        //     icon: Icon(Icons.arrow_forward),
+        //     onPressed: onPressed,
+        //   ),
+        // ),
 
         // Product Details
         Padding(
@@ -51,7 +61,6 @@ Widget buildProductItem(
                 name,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 8.0),
 
               // Product Pricing
               // Text(
@@ -63,7 +72,7 @@ Widget buildProductItem(
               const SizedBox(height: 8.0),
               Align(
                   alignment: Alignment.topLeft,
-                  child: Homebutton(title: 'Learn More', onPress: () {}))
+                  child: Homebutton(title: 'Learn More', onPress: onPressed))
             ],
           ),
         ),
