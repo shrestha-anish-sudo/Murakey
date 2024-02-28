@@ -9,4 +9,5 @@ class RoutesName {
   static const String forgotpassword = 'Forgot_Password_screen';
   static const String welcome = 'Welcome_screen';
   static const String otpscreen = 'otp_screen';
+  static const String category = 'Category_screen';
 }

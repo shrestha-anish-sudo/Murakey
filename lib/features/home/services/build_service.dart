@@ -14,10 +14,10 @@ Widget buildServiceItem(
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.white24.withOpacity(0.3),
+            color: Colors.white12.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 2), // changes position of shadow
+            offset: Offset(0, 4), // Only bottom shadow
           ),
         ],
       ),

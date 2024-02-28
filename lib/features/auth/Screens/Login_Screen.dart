@@ -146,7 +146,6 @@ class LoginScreen extends StatelessWidget {
                         ))
                   ],
                 ),
-                
                 const SizedBox(height: 20),
                 RoundButton(
                   title: 'Login',

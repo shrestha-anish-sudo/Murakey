@@ -19,10 +19,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Image.asset(
-        splash,
-        fit: BoxFit.contain,
+    return SafeArea(
+      child: Center(
+        child: Image.asset(
+          splash,
+          fit: BoxFit.contain,
+        ),
       ),
     );
   }

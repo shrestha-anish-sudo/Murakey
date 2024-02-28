@@ -17,3 +17,20 @@ const String c1 = "assets/images/C1.png";
 const String c2 = "assets/images/C2.png";
 const String facial = "assets/images/facial.png";
 const String ladybg = "assets/images/ladybg.jpg";
+const String i1 = "assets/images/I1.jpg";
+const String i2 = "assets/images/I2.jpg";
+const String i3 = "assets/images/I3.jpg";
+const String i4 = "assets/images/I4.jpg";
+const String i5 = "assets/images/I6.jpg";
+const String i6 = "assets/images/I7.jpg";
+const String hb1 = "assets/images/hb1.png";
+const String hb2 = "assets/images/hb2.png";
+const String ca1 = "assets/images/Ca1.png";
+const String ca2 = "assets/images/Ca2.png";
+const String ca3 = "assets/images/Ca3.png";
+const String ca4 = "assets/images/Ca4.png";
+
+
+
+
+
