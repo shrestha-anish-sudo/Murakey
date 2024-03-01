@@ -5,6 +5,7 @@ import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
+import 'package:murarkey/features/home/widgets/back_arrow.dart';
 import 'package:murarkey/res/colors.dart';
 import 'package:murarkey/res/components/round_button.dart';
 import 'package:provider/provider.dart';
@@ -37,18 +38,16 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  widthFactor: 13,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, RoutesName.welcome);
-                    },
-                    child: const Icon(
-                      Icons.arrow_back_ios,
-                      color: Colors.black, // Set your desired color
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Backarrow(),
                     ),
-                  ),
+                  ],
                 ),
                 const SizedBox(
                   height: 30,
@@ -64,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                       Text(
                         'Welcome back! Glad\nto see you, Again!',
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

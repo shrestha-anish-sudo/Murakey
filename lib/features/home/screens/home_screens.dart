@@ -23,6 +23,7 @@ class Homescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tabProvider = Provider.of<TabSelectionNotifier>(context);
+    final homeTabProvider = Provider.of<TabSelectionNotifier>(context);
 
     return Scaffold(
         body: SafeArea(
@@ -83,7 +84,7 @@ class Homescreen extends StatelessWidget {
                 length: 2,
                 child: Container(
                   child: Consumer<TabSelectionNotifier>(
-                    builder: (context, tabProvider, _) {
+                    builder: (context, hometabProvider, _) {
                       return TabBar(
                         indicatorColor: AppColor.lightPurple,
                         indicatorWeight: 3.0,
@@ -101,7 +102,7 @@ class Homescreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: tabProvider.selectedIndex == 0
+                                color: hometabProvider.selectedIndex == 0
                                     ? Colors.black
                                     : Colors.grey,
                               ),
@@ -118,7 +119,7 @@ class Homescreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: tabProvider.selectedIndex == 1
+                                  color: hometabProvider.selectedIndex == 1
                                       ? Colors.black
                                       : Colors.grey,
                                 ),
@@ -281,11 +282,11 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Row(
-                children: [
-                  Column(
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(18),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text('Pamper Yourself\nwith Murarkey\nServices',
@@ -297,36 +298,86 @@ class Homescreen extends StatelessWidget {
                       Homebutton(title: 'Explore More', onPress: () {}),
                     ],
                   ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  // Container(
-                  //   child: Stack(children: [
-                  //     Image.asset(
-                  //       facial,
-                  //       fit: BoxFit.cover,
-                  //     ),
-                  //     // Positioned(
-                  //     //   bottom: 0,
-                  //     //   left: 0,
-                  //     //   right: 0,
-                  //     //   child: Container(
-                  //     //     height: 20,
-                  //     //     decoration: BoxDecoration(
-                  //     //       gradient: LinearGradient(
-                  //     //           begin: Alignment.bottomCenter,
-                  //     //           end: Alignment.topCenter,
-                  //     //           colors: [
-                  //     //             Colors.black.withOpacity(0.8),
-                  //     //             Colors.transparent,
-                  //     //           ]),
-                  //     //     ),
-                  //     //   ),
-                  //     // ),
-                  //   ]),
-                  // ),
-                ],
-              ),
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                Container(
+                  height: 210,
+                  width: 170,
+                  child: Stack(children: [
+                    Image.asset(
+                      facial,
+                      width: 170,
+                      height: 210,
+                      fit: BoxFit.cover,
+                    ),
+                    Positioned(
+                      bottom: 8,
+                      left: 8,
+                      width: 90,
+                      height: 60,
+                      child: Container(
+                          height: 20,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [
+                                  Colors.white.withOpacity(0.9),
+                                  Color.fromARGB(232, 236, 226, 226)
+                                      .withOpacity(0.7),
+                                ]),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '01',
+                                  style: TextStyle(
+                                      color: AppColor.black, fontSize: 10),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  'Facial',
+                                  style: TextStyle(
+                                      color: AppColor.black,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                          )),
+                    ),
+                    Positioned(
+                      bottom: 8,
+                      left: 98,
+                      width: 40,
+                      height: 30,
+                      child: Container(
+                          height: 40,
+                          width: 40,
+                          color: AppColor.lightPurple,
+                          child: const Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.arrow_forward_outlined,
+                                color: AppColor.white,
+                                size: 15,
+                              )
+                            ],
+                          )),
+                    ),
+                  ]),
+                ),
+              ],
             ),
             const SizedBox(
               height: 30,
@@ -344,7 +395,7 @@ class Homescreen extends StatelessWidget {
                       fontSize: 18,
                     ),
                   ),
-                  const SizedBox(width: 160),
+                  const SizedBox(width: 170),
                   const Text(
                     'See all',
                     style: TextStyle(
@@ -353,7 +404,7 @@ class Homescreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 1,
                   ),
                   InkWell(
                     onTap: () {},
@@ -372,7 +423,9 @@ class Homescreen extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Row(
                 children: [
-                  buildCourseItem('Self Makeup', c1, () {}),
+                  buildCourseItem('Self Makeup', c1, () {
+                    Navigator.pushNamed(context, RoutesName.courseone);
+                  }),
                   const SizedBox(width: 16.0),
                   buildCourseItem('Self Makeup', c2, () {}),
                 ],

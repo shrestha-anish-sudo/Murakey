@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:murarkey/features/home/widgets/home_button.dart';
+import 'package:murarkey/features/Category/widget/category_button.dart';
 
 Widget buildCategoryItem(
   String imagePath,
@@ -8,10 +8,9 @@ Widget buildCategoryItem(
 ) {
   return Expanded(
     child: Container(
-      height: 280,
-      width: 250,
+      height: 290,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
+        // border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
@@ -27,27 +26,31 @@ Widget buildCategoryItem(
         children: [
           // Category Image
           Container(
-            height: 140.0,
-            width: double.infinity,
+            height: 300,
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(10),
               image: DecorationImage(
                 image: AssetImage(imagePath),
-                fit: BoxFit.cover,
+                fit: BoxFit
+                    .cover, // Use BoxFit.fill to cover the entire container
               ),
             ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 150.0),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 95.0),
 
-              // Enquiry Button
-              Align(
-                alignment: Alignment.topLeft,
-                child: Homebutton(title: buttonTitle, onPress: onPressed),
-              ),
-            ],
+                // Enquiry Button
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Categorybutton(title: buttonTitle, onPress: onPressed),
+                ),
+              ],
+            ),
           ),
         ],
       ),

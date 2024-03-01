@@ -2,18 +2,11 @@ import 'package:flutter/material.dart';
 
 class TabSelectionNotifier extends ChangeNotifier {
   int _selectedIndex = 0;
-  int _selectedIndex1 = 0;
 
   int get selectedIndex => _selectedIndex;
-  int get selectedIndex1 => _selectedIndex1;
 
   void setTabIndex(int index) {
     _selectedIndex = index;
-    notifyListeners();
-  }
-
-  void setTabIndex1(int index1) {
-    _selectedIndex1 = index1;
     notifyListeners();
   }
 }
