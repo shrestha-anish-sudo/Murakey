@@ -29,8 +29,6 @@ Widget buildCourseItem(
           // Product Image
           Container(
             height: 140.0,
-
-            width: double.infinity, // Set the height as needed
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(10),
               image: DecorationImage(
@@ -83,9 +81,7 @@ Widget buildCourseItem(
               const SizedBox(height: 8.0),
               Align(
                   alignment: Alignment.topLeft,
-                  child: Homebutton(title: 'Enquiry Now', onPress: onPressed)
-                  ),
-                  
+                  child: Homebutton(title: 'Enquiry Now', onPress: onPressed)),
             ],
           ),
         ],

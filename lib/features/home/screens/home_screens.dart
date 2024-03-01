@@ -190,7 +190,7 @@ class Homescreen extends StatelessWidget {
                     'Rs. 1000',
                     f1,
                   ),
-                  const SizedBox(width: 16.0),
+                  const SizedBox(width: 6.0),
                   buildServiceItem(
                     'Bridal Makeup with\nhairstyle',
                     'Rs. 1000',
@@ -205,7 +205,7 @@ class Homescreen extends StatelessWidget {
               child: Row(
                 children: [
                   buildServiceItem('Makeup', 'Rs. 1000', f3),
-                  const SizedBox(width: 16.0),
+                  const SizedBox(width: 6.0),
                   buildServiceItem(
                       'Bridal Makeup with\nhairstyle', 'Rs. 1000', f4),
                 ],
@@ -420,13 +420,13 @@ class Homescreen extends StatelessWidget {
               height: 1,
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(6.0),
               child: Row(
                 children: [
                   buildCourseItem('Self Makeup', c1, () {
                     Navigator.pushNamed(context, RoutesName.courseone);
                   }),
-                  const SizedBox(width: 16.0),
+                  const SizedBox(width: 6.0),
                   buildCourseItem('Self Makeup', c2, () {}),
                 ],
               ),
@@ -437,13 +437,13 @@ class Homescreen extends StatelessWidget {
               child: Row(
                 children: [
                   buildCourseItem('Self Makeup', c2, () {}),
-                  const SizedBox(width: 16.0),
+                  const SizedBox(width: 10.0),
                   buildCourseItem('Self Makeup', c2, () {}),
                 ],
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),

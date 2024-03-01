@@ -178,11 +178,14 @@ class LoginScreen extends StatelessWidget {
                   height: 30,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Socailbutton(imagePath: facebook, onPressed: () {}),
+                    const SizedBox(
+                      width: 5,
+                    ),
                     Socailbutton(imagePath: google, onPressed: () {}),
-                    Socailbutton(imagePath: apple, onPressed: () {}),
                   ],
                 ),
                 const SizedBox(height: 105),

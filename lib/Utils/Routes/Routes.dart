@@ -38,7 +38,7 @@ class Routes {
         return _pageRoute(const Categoryscreen());
       case RoutesName.courseone:
         return _pageRoute(const Courseone());
-      case RoutesName.:
+      case RoutesName.createnew:
         return _pageRoute(const Createnew());
     }
     return null;

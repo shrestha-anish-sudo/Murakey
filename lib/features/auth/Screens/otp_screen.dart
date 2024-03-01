@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/features/auth/widget/otp_textfield.dart';
 import 'package:murarkey/features/home/widgets/back_arrow.dart';
 import 'package:murarkey/res/colors.dart';
@@ -80,7 +81,11 @@ class Otpscreen extends StatelessWidget {
               // const SizedBox(height: 0),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: RoundButton(title: 'Verify', onPress: () {}),
+                child: RoundButton(
+                    title: 'Verify',
+                    onPress: () {
+                      Navigator.pushNamed(context, RoutesName.createnew);
+                    }),
               ),
               const SizedBox(
                 height: 60,
@@ -96,7 +101,7 @@ class Otpscreen extends StatelessWidget {
                   const SizedBox(width: 5),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, ROu)
+                      // Navigator.pushNamed(context, RoutesName.createnew);
                       // Navigator.pushNamed(
                       //     context,
                       //     RoutesName
