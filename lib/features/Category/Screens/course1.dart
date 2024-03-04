@@ -9,11 +9,17 @@ import 'package:murarkey/res/colors.dart';
 import 'package:provider/provider.dart';
 
 class Courseone extends StatelessWidget {
-  const Courseone({super.key});
+  // void showForm(BuildContext context) {
+  //   final formProvider = Provider.of<FormProvider>(context, listen: false);
+  //   formProvider.toggleFormVisibility();
+  // }
+
+  const Courseone({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final formprovider = Provider.of<FormProvider>(context);
+    final formProvider = Provider.of<FormProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -24,15 +30,16 @@ class Courseone extends StatelessWidget {
                   Container(
                     height: 350,
                     decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.white)),
+                      border: Border.all(color: AppColor.white),
+                    ),
                     child: Image.asset(
                       c1,
                       fit: BoxFit.fill,
                     ),
                   ),
                   Positioned(
-                    top: 20, // Adjust the top position as needed
-                    left: 20, // Adjust the left position as needed
+                    top: 20,
+                    left: 20,
                     child: GestureDetector(
                       onTap: () {
                         // Handle backward icon tap
@@ -43,9 +50,7 @@ class Courseone extends StatelessWidget {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 5,
-              ),
+              const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Row(
@@ -56,31 +61,43 @@ class Courseone extends StatelessWidget {
                         Text(
                           'Self Makeup Course',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
-                        SizedBox(
-                          height: 5,
-                        ),
+                        SizedBox(height: 5),
                         Text(
                           'Duration: 7 days',
                           style: TextStyle(color: AppColor.gray),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      width: 60,
-                    ),
+                    const SizedBox(width: 60),
                     Homebutton(
-                        title: 'Fill the form',
-                        onPress: () {
-                          formprovider.showForm;
-                        }),
+                      title: 'Fill the form',
+                      onPress: () {
+                        print('done');
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return MyPopupForm(
+                              isVisible: true,
+                              onSubmit: () {
+                                // Handle form submission logic here
+                                formProvider
+                                    .toggleFormVisibility(); // Close the form
+                                Navigator.pop(
+                                    context); // Close the bottom sheet
+                              },
+                            );
+                          },
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 1,
-              ),
+              const SizedBox(height: 1),
               const Padding(
                 padding: EdgeInsets.all(18.0),
                 child: Row(
@@ -95,31 +112,26 @@ class Courseone extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(
-                          height: 10,
-                        ),
+                        SizedBox(height: 10),
                         Text(
-                          'Get services from out experienced beautician for\nyour Hands, Feet, Nails, Face, Body, etc.Book a\nmurarkey beautician to come  to you. Spoil\nyourself every once in a while, you deserve it.',
+                          'Get services from our experienced beautician for\nyour Hands, Feet, Nails, Face, Body, etc. Book a\nmurarkey beautician to come to you. Spoil\nyourself every once in a while, you deserve it.',
                           style: TextStyle(color: AppColor.gray),
                         ),
-                        SizedBox(
-                          height: 30,
-                        ),
+                        SizedBox(height: 30),
                         Text(
                           'Related Course',
                           style: TextStyle(
-                              color: AppColor.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16),
+                            color: AppColor.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
                       ],
                     )
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Container(
                 height: 300,
                 padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
@@ -138,7 +150,6 @@ class Courseone extends StatelessWidget {
                   ],
                 ),
               ),
-              if (formprovider.showForm) MyPopupForm(),
             ],
           ),
         ),
