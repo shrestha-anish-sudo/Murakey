@@ -12,4 +12,5 @@ class RoutesName {
   static const String category = 'Category_screen';
   static const String courseone = 'Course_one';
   static const String createnew = 'Create_new_password';
+  static const String coursetwo = 'Course_two';
 }

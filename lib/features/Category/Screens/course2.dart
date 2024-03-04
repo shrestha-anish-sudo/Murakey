@@ -8,12 +8,13 @@ import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/res/colors.dart';
 import 'package:provider/provider.dart';
 
-class Courseone extends StatelessWidget {
-  const Courseone({super.key});
+class Coursetwo extends StatelessWidget {
+  const Coursetwo({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    final formprovider = Provider.of<FormProvider>(context);
+    final formProvider = Provider.of<FormProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -31,11 +32,10 @@ class Courseone extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 20, // Adjust the top position as needed
-                    left: 20, // Adjust the left position as needed
+                    top: 20,
+                    left: 20,
                     child: GestureDetector(
                       onTap: () {
-                        // Handle backward icon tap
                         Navigator.pop(context);
                       },
                       child: const Backarrow(),
@@ -71,10 +71,12 @@ class Courseone extends StatelessWidget {
                       width: 60,
                     ),
                     Homebutton(
-                        title: 'Fill the form',
-                        onPress: () {
-                          formprovider.showForm;
-                        }),
+                      title: 'Fill the form',
+                      onPress: () {
+                        print('okay!');
+                        formProvider.showForm;
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -138,7 +140,8 @@ class Courseone extends StatelessWidget {
                   ],
                 ),
               ),
-              if (formprovider.showForm) MyPopupForm(),
+              // Show the MyPopupForm if _showForm is true
+              if (formProvider.showForm) MyPopupForm(),
             ],
           ),
         ),

@@ -3,6 +3,7 @@ import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/features/Cart/Screens/Cart_screen.dart';
 import 'package:murarkey/features/Category/Screens/category_screen.dart';
 import 'package:murarkey/features/Category/Screens/course1.dart';
+import 'package:murarkey/features/Category/Screens/course2.dart';
 import 'package:murarkey/features/auth/Screens/Login_Screen.dart';
 import 'package:murarkey/features/auth/Screens/Signup_screen.dart';
 import 'package:murarkey/features/auth/Screens/create_new.dart';
@@ -38,6 +39,8 @@ class Routes {
         return _pageRoute(const Categoryscreen());
       case RoutesName.courseone:
         return _pageRoute(const Courseone());
+      case RoutesName.coursetwo:
+        return _pageRoute(const Coursetwo());
       case RoutesName.createnew:
         return _pageRoute(const Createnew());
     }

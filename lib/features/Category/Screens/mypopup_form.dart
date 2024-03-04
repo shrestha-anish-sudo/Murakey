@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:murarkey/features/Category/Provider/categoryprovider.dart';
 import 'package:murarkey/features/home/widgets/course_button.dart';
 import 'package:murarkey/res/colors.dart';
+import 'package:provider/provider.dart';
 
 class MyPopupForm extends StatefulWidget {
   @override
@@ -12,17 +14,22 @@ class _MyPopupFormState extends State<MyPopupForm> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      contentPadding: const EdgeInsets.all(10), // Padding for the content area
-      shape: RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.circular(10.0), // Adjust the radius as needed
-      ),
-      content: Padding(
-        padding: const EdgeInsets.all(10.0),
+    var formProvider = Provider.of<FormProvider>(context);
+
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: AnimatedPositioned(
+        duration: Duration(milliseconds: 300),
+        bottom: formProvider.showForm ? 0 : -200,
+        left: 0,
+        right: 0,
         child: Container(
-          width: 450.0, // Adjust the width as needed
-          height: 400.0, // Adjust the height as needed
+          height: 500,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.0),
+            color: Colors.white,
+          ),
           child: Form(
             key: _formKey,
             child: SingleChildScrollView(
@@ -90,8 +97,9 @@ class _MyPopupFormState extends State<MyPopupForm> {
                         onPress: () {
                           if (_formKey.currentState!.validate()) {
                             // Form is valid, handle submission
-                            // For now, just close the dialog
-                            Navigator.of(context).pop();
+                            // For now, you can add your logic here
+                            formProvider
+                                .toggleFormVisibility(); // Close the form
                           }
                         },
                       ),

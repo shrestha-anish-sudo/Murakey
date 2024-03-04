@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Routes/routes.dart';
 import 'package:murarkey/features/Cart/provider/cart_provider.dart';
+import 'package:murarkey/features/Category/Provider/categoryprovider.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
 import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/provider/password_provider.dart';
@@ -36,11 +37,12 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => ImageEnlargeNotifier()),
           ChangeNotifierProvider(create: (_) => ImageGalleryState()),
           ChangeNotifierProvider(create: (_) => IconButtonVisibilityNotifier()),
+          ChangeNotifierProvider(create: (_) => FormProvider()),
 
           // Add other providers as needed
         ],
         child: MaterialApp(
-          title: 'Murakey',
+          title: 'Murarkey',
           theme: ThemeData(
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,

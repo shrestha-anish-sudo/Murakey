@@ -437,7 +437,9 @@ class Homescreen extends StatelessWidget {
                     Navigator.pushNamed(context, RoutesName.courseone);
                   }),
                   const SizedBox(width: 6.0),
-                  buildCourseItem('Self Makeup', c2, () {}),
+                  buildCourseItem('Self Makeup', c2, () {
+                    Navigator.pushNamed(context, RoutesName.coursetwo);
+                  }),
                 ],
               ),
             ),
