@@ -55,3 +55,16 @@ class ImageGalleryState extends ChangeNotifier {
     }
   }
 }
+
+class IconButtonVisibilityNotifier extends ChangeNotifier {
+  bool _isIconButtonVisible = false;
+
+  bool get isIconButtonVisible => _isIconButtonVisible;
+
+  void updateVisibility(bool isVisible) {
+    if (_isIconButtonVisible != isVisible) {
+      _isIconButtonVisible = isVisible;
+      notifyListeners();
+    }
+  }
+}

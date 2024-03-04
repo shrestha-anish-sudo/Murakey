@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/res/colors.dart';
@@ -78,5 +79,31 @@ Widget buildProductItem(BuildContext context, String name, String imagePath,
         ),
       ],
     ),
+  );
+}
+
+Widget buildProductItemWithButton(BuildContext context, String name,
+    String imagePath, String topRightText, VoidCallback onPressed) {
+  CarouselController buttonCarouselController = CarouselController();
+  CarouselController _carouselController = CarouselController();
+
+  return Stack(
+    children: [
+      buildProductItem(context, name, imagePath, topRightText, onPressed),
+      Positioned(
+        top: 70,
+        right: 50,
+        child: CircleAvatar(
+          radius: 20,
+          backgroundColor: AppColor.white,
+          child: IconButton(
+            color: AppColor.black,
+            icon: Icon(Icons.arrow_forward_ios),
+            onPressed: () {
+            },
+          ),
+        ),
+      ),
+    ],
   );
 }

@@ -10,7 +10,7 @@ Widget buildCategoryItem(
     child: Container(
       height: 290,
       decoration: BoxDecoration(
-        // border: Border.all(color: Colors.black),
+        border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(

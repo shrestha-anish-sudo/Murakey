@@ -17,6 +17,7 @@ import 'package:provider/provider.dart';
 
 class Homescreen extends StatelessWidget {
   CarouselController buttonCarouselController = CarouselController();
+  CarouselController _carouselController = CarouselController();
 
   Homescreen({Key});
 
@@ -230,33 +231,42 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            // Container(
-            //   height: 260,
-            //   child: CarouselSlider(items: [
-            //      buildProductItem(
-            //           context, 'Nail Extension', p1, 'Popular', () {}),
-            //       buildProductItem(
-            //           context, 'Mani-Pedi', p2, 'Top Rated', () {}),
-            //       buildProductItem(
-            //         context,
-            //         'Waxing',
-            //         p3,
-            //         'Top Rated',
-            //         () {},
-            //       ),
 
-            //   ],
-            //   carouselController: buttonCarouselController,
-            //   options: CarouselOptions(
-            //     autoPlay: false,
-            //     enlargeCenterPage: false,
-            //     viewportFraction: 0.9,
-            //     aspectRatio: 2.0,
-            //     initialPage: 2
+            // Padding(
+            //   padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+            //   child: Container(
+            //     height: 276,
+            //     child: Column(
+            //       children: [
+            //         CarouselSlider(
+            //           carouselController: _carouselController,
+            //           options: CarouselOptions(
+            //             height: 275.0,
+            //             enlargeCenterPage: false,
+            //             autoPlay: false, // Set to true if you want auto-play
+            //             aspectRatio: 16 / 9,
+            //             autoPlayCurve: Curves.fastOutSlowIn,
+            //             enableInfiniteScroll: false,
+            //             autoPlayAnimationDuration: Duration(milliseconds: 800),
+            //             viewportFraction: 0.4,
+            //           ),
+            //           items: [
+            //             buildProductItem(
+            //                 context, 'Nail Extension', p1, 'Popular', () {}),
+            //             buildProductItem(
+            //                 context, 'Mani-Pedi', p2, 'Top Rated', () {}),
+            //             buildProductItemWithButton(
+            //               context,
+            //               'Waxing',
+            //               p3,
+            //               'Top Rated',
+            //               () {},
+            //             ),
+            //           ],
+            //         ),
+            //       ],
+            //     ),
             //   ),
-
-            //   ),
-
             // ),
 
             Container(
@@ -492,95 +502,95 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Stack(children: [
-              Container(
-                  height: 260,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColor.black),
-                  ),
-                  child: Image.asset(
-                    ladybg,
-                    fit: BoxFit.cover,
-                  )),
-              Positioned(
-                top: 25,
-                bottom: 17.0,
-                left: 60.0,
-                right: 60.0,
-                child: Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColor.white),
-                  ),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      const Text(
-                        'Join Our Team',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 22,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      const Text(
-                        'Beauty Professionals',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Homebutton(title: 'Join us', onPress: () {}),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10)),
-                              height: 35,
-                              width: 90,
-                              child: Image.asset(
-                                hb1,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          InkWell(
-                            onTap: () {},
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10)),
-                              height: 35,
-                              width: 90,
-                              child: Image.asset(
-                                hb2,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ]),
+            // Stack(children: [
+            //   Container(
+            //       height: 260,
+            //       decoration: BoxDecoration(
+            //         border: Border.all(color: AppColor.black),
+            //       ),
+            //       child: Image.asset(
+            //         ladybg,
+            //         fit: BoxFit.cover,
+            //       )),
+            //   Positioned(
+            //     top: 25,
+            //     bottom: 17.0,
+            //     left: 60.0,
+            //     right: 60.0,
+            //     child: Container(
+            //       padding: const EdgeInsets.all(16.0),
+            //       decoration: BoxDecoration(
+            //         border: Border.all(color: AppColor.white),
+            //       ),
+            //       child: Column(
+            //         children: [
+            //           const SizedBox(
+            //             height: 15,
+            //           ),
+            //           const Text(
+            //             'Join Our Team',
+            //             style: TextStyle(
+            //                 color: Colors.white,
+            //                 fontSize: 22,
+            //                 fontWeight: FontWeight.bold),
+            //           ),
+            //           const SizedBox(
+            //             height: 8,
+            //           ),
+            //           const Text(
+            //             'Beauty Professionals',
+            //             style: TextStyle(
+            //                 color: Colors.white,
+            //                 fontSize: 12,
+            //                 fontWeight: FontWeight.normal),
+            //           ),
+            //           const SizedBox(
+            //             height: 8,
+            //           ),
+            //           Homebutton(title: 'Join us', onPress: () {}),
+            //           const SizedBox(
+            //             height: 20,
+            //           ),
+            //           Row(
+            //             mainAxisAlignment: MainAxisAlignment.center,
+            //             crossAxisAlignment: CrossAxisAlignment.center,
+            //             children: [
+            //               InkWell(
+            //                 onTap: () {},
+            //                 child: Container(
+            //                   decoration: BoxDecoration(
+            //                       borderRadius: BorderRadius.circular(10)),
+            //                   height: 35,
+            //                   width: 90,
+            //                   child: Image.asset(
+            //                     hb1,
+            //                     fit: BoxFit.cover,
+            //                   ),
+            //                 ),
+            //               ),
+            //               const SizedBox(
+            //                 width: 5,
+            //               ),
+            //               InkWell(
+            //                 onTap: () {},
+            //                 child: Container(
+            //                   decoration: BoxDecoration(
+            //                       borderRadius: BorderRadius.circular(10)),
+            //                   height: 35,
+            //                   width: 90,
+            //                   child: Image.asset(
+            //                     hb2,
+            //                     fit: BoxFit.cover,
+            //                   ),
+            //                 ),
+            //               )
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ]),
             const SizedBox(
               height: 20,
             ),

@@ -11,10 +11,11 @@ class Createnew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-    TextEditingController _passwordController = TextEditingController();
-    TextEditingController _confirmPasswordController = TextEditingController();
+    final TextEditingController _passwordController = TextEditingController();
+    final TextEditingController _confirmPasswordController =
+        TextEditingController();
 
-        final passwordVisibilityNotifier = Provider.of<Passwordvisibility>(context);
+    final passwordVisibility = Provider.of<Passwordvisibility>(context);
 
     return Scaffold(
       body: SafeArea(
@@ -69,49 +70,68 @@ class Createnew extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              TextFormField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'New Password',
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a new password';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _confirmPasswordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Confirm Password',
-                   prefixIcon: const Icon(Icons.security_outlined),
-                  suffixIcon: InkWell(
-                    onTap: () {
-                      passwordVisibilityNotifier.toggleVisibility();
-                    },
-                    child: Icon(passwordVisibilityNotifier.isvisible
-                        ? Icons.visibility_off_outlined
-                        : Icons.visibility_outlined),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: TextFormField(
+                  controller: _passwordController,
+                  obscureText: !passwordVisibility.isvisible,
+                  decoration: InputDecoration(
+                    labelText: 'New Password',
+                    prefixIcon: const Icon(Icons.security_outlined),
+                    border: const OutlineInputBorder(),
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        passwordVisibility.toggleVisibility();
+                      },
+                      child: Icon(passwordVisibility.isvisible
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined),
+                    ),
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a new password';
+                    }
+                    return null;
+                  },
                 ),
-                
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please confirm your password';
-                  } else if (value != _passwordController.text) {
-                    return 'Passwords do not match';
-                  }
-                  return null;
-                },
+              ),
+              const SizedBox(height: 1),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: TextFormField(
+                  controller: _confirmPasswordController,
+                  obscureText: !passwordVisibility.isvisible,
+                  decoration: InputDecoration(
+                    labelText: 'Confirm Password',
+                    prefixIcon: const Icon(Icons.security_outlined),
+                    border: const OutlineInputBorder(),
+                    suffixIcon: InkWell(
+                      onTap: () {
+                        passwordVisibility.toggleVisibility();
+                      },
+                      child: Icon(passwordVisibility.isvisible
+                          ? Icons.visibility_off_outlined
+                          : Icons.visibility_outlined),
+                    ),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please confirm your password';
+                    } else if (value != _passwordController.text) {
+                      return 'Passwords do not match';
+                    }
+                    return null;
+                  },
+                ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
-              RoundButton(title: 'Reset Password', onPress: () {}),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: RoundButton(title: 'Reset Password', onPress: () {}),
+              ),
             ],
           ),
         ),
