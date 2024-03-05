@@ -23,7 +23,6 @@ class Homescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tabProvider = Provider.of<TabSelectionNotifier>(context);
     final homeTabProvider = Provider.of<TabSelectionNotifier>(context);
 
     return Scaffold(

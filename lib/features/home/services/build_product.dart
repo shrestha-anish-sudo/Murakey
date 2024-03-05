@@ -99,8 +99,7 @@ Widget buildProductItemWithButton(BuildContext context, String name,
           child: IconButton(
             color: AppColor.black,
             icon: Icon(Icons.arrow_forward_ios),
-            onPressed: () {
-            },
+            onPressed: () {},
           ),
         ),
       ),

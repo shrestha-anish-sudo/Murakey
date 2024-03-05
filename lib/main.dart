@@ -4,6 +4,7 @@ import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Routes/routes.dart';
 import 'package:murarkey/features/Cart/provider/cart_provider.dart';
 import 'package:murarkey/features/Category/Provider/categoryprovider.dart';
+import 'package:murarkey/features/Mainscreen/Provider/tabprovider.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
 import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/provider/password_provider.dart';
@@ -33,11 +34,12 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => AuthProvider()),
           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
           ChangeNotifierProvider(create: (_) => ProductProvider()),
-          ChangeNotifierProvider(create: (_) => TabSelectionNotifier()),
+          ChangeNotifierProvider(create: (_) => TabProvider()),
           ChangeNotifierProvider(create: (_) => ImageEnlargeNotifier()),
           ChangeNotifierProvider(create: (_) => ImageGalleryState()),
           ChangeNotifierProvider(create: (_) => IconButtonVisibilityNotifier()),
           ChangeNotifierProvider(create: (_) => FormProvider()),
+          ChangeNotifierProvider(create: (_) => TabSelectionNotifier()),
 
           // Add other providers as needed
         ],
