@@ -17,7 +17,7 @@ class AuthRepository {
   Future<dynamic> signUpapi(dynamic data) async {
     try {
       dynamic response =
-          await _apiServices.getApiResponse(AppUrl.registerApiEndpoint, data);
+          await _apiServices.getApiResponse(AppUrl.registerApiEndpoint);
       return response;
     } catch (e) {
       throw e;

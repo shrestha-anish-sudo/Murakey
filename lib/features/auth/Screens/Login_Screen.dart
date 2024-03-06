@@ -3,6 +3,7 @@ import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
+import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/features/home/widgets/back_arrow.dart';
@@ -22,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authview = Provider.of<AuthProvider>(context);
-    // final loginview = Provider.of<Loginprovider>(context);
+    final loginview = Provider.of<Loginprovider>(context);
 
     return SafeArea(
         child: Scaffold(
@@ -99,8 +100,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                     onFieldSubmitted: (value) {
-                      Utils.fieldFocusChange(
-                          context, _phoneFocusNode, _passwordFocusNode);
+                      FocusScope.of(context).requestFocus(_passwordFocusNode);
                     },
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -155,8 +155,9 @@ class LoginScreen extends StatelessWidget {
                       print('Api hit');
                     } else {
                       Map data = {
-                        // 'Phonenumber': loginview.phoneNumber.toString(),
-                        // 'password': loginview.password.toString(),
+                        'phoneNumber' : loginview.phoneNumber.toString(),
+
+                        'password': loginview.password.toString(),
                       };
                       authview.loginApi(data, context).then((value) {
                         // Navigator.pushNamed(context, RoutesName.home);

@@ -36,6 +36,7 @@ class PasswordTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
+         
         obscureText: passwordVisibilityNotifier.obscurePassword,
         validator: (value) {
           if (value!.isEmpty) {

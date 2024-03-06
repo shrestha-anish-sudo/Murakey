@@ -76,7 +76,7 @@ class NetworkApiService implements BaseApiServices {
   }
 
   @override
-  Future getApiResponse(String url, data) {
+  Future getApiResponse(String url) {
     throw UnimplementedError();
   }
 }

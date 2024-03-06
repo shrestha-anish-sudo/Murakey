@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
+import 'package:murarkey/features/auth/provider/auth_provider.dart';
 import 'package:murarkey/features/auth/provider/password_provider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
@@ -25,6 +27,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final passwordVisibilityNotifier = Provider.of<Passwordvisibility>(context);
+    final authprovider = Provider.of<AuthProvider>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -83,10 +86,9 @@ class SignUp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      // onFieldSubmitted: (value) {
-                      //   Utils.flushBarErrorMessage(
-                      //       'please enter you username', context);
-                      // },
+                      onFieldSubmitted: (value) {
+                        FocusScope.of(context).requestFocus(_phoneFocusNode);
+                      },
                       validator: (value) {
                         if (value!.isEmpty) {
                           Utils.toastMessage('please enter your username');
@@ -121,11 +123,7 @@ class SignUp extends StatelessWidget {
                         ),
                       ),
                       onFieldSubmitted: (value) {
-                        Utils.fieldFocusChange(
-                          context,
-                          _phoneFocusNode,
-                          _passwordFocusNode,
-                        );
+                        FocusScope.of(context).requestFocus(_passwordFocusNode);
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -149,7 +147,9 @@ class SignUp extends StatelessWidget {
                     child: PasswordTextField(
                       passwordController: _passwordController,
                       passwordFocusNode: _passwordFocusNode,
+                      
                     ),
+                    
                   ),
                   const SizedBox(
                     height: 10,
@@ -191,9 +191,8 @@ class SignUp extends StatelessWidget {
                   const SizedBox(height: 20),
                   RoundButton(
                     title: 'SignUp',
-                    onPress: () {
+                    onPress: () async {
                       if (_formKey.currentState!.validate()) {
-                        // Navigator.pushNamed(context, RoutesName.login);
                         print('Api hit');
                       }
                     },
