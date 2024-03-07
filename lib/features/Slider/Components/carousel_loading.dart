@@ -12,7 +12,9 @@ class CarouselLoading extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+            height: 150,
+            width: 400,
+            margin: const EdgeInsets.fromLTRB(16, 0, 16, 0),
             decoration: const BoxDecoration(
                 color: Colors.grey,
                 borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -27,7 +29,7 @@ class CarouselLoading extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 8,
+            height: 3,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

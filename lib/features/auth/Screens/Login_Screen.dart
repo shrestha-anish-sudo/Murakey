@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authview = Provider.of<AuthProvider>(context);
-    final loginview = Provider.of<Loginprovider>(context);
+    // final loginview = Provider.of<Loginprovider>(context);
 
     return SafeArea(
         child: Scaffold(
@@ -155,9 +155,9 @@ class LoginScreen extends StatelessWidget {
                       print('Api hit');
                     } else {
                       Map data = {
-                        'phoneNumber' : loginview.phoneNumber.toString(),
+                        // 'phoneNumber' : loginview.phoneNumber.toString(),
 
-                        'password': loginview.password.toString(),
+                        // 'password': loginview.password.toString(),
                       };
                       authview.loginApi(data, context).then((value) {
                         // Navigator.pushNamed(context, RoutesName.home);

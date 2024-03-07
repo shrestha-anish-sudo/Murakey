@@ -1,7 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:murarkey/features/Slider/Model/slidermodel.dart';
-import 'package:murarkey/features/Slider/services/slider_services.dart';
+import 'package:murarkey/features/Slider/Components/carousel_loading.dart';
+import 'package:murarkey/features/home/Models/slidermodel.dart';
+import 'package:murarkey/features/home/services/slider_services.dart';
 
 class Carousel extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class Carousel extends StatelessWidget {
       future: SliderService.fetchCarouselData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return CarouselLoading();
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else if (!snapshot.hasData || snapshot.data!.data == null) {
@@ -32,7 +33,7 @@ class Carousel extends StatelessWidget {
               );
             }).toList(),
             options: CarouselOptions(
-              height: 130,
+              height: 140,
               aspectRatio: 16 / 9,
               viewportFraction: 0.3,
               initialPage: 0,

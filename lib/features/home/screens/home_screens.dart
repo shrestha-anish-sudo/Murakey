@@ -2,16 +2,16 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
-import 'package:murarkey/features/Slider/slider_screen.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
+import 'package:murarkey/features/home/screens/featured_screens.dart';
 import 'package:murarkey/features/home/services/build_courses.dart';
 import 'package:murarkey/features/home/services/build_product.dart';
-import 'package:murarkey/features/home/services/build_service.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/features/home/widgets/home_icons.dart';
 import 'package:murarkey/features/home/widgets/image_gallery.dart';
 // import 'package:murarkey/features/home/widgets/image_gallery.dart';
 import 'package:murarkey/features/home/widgets/search_bar.dart';
+import 'package:murarkey/features/home/widgets/slider_screen.dart';
 import 'package:murarkey/res/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -141,9 +141,9 @@ class Homescreen extends StatelessWidget {
               child: SearchBox(),
             ),
             const SizedBox(
-              height: 20,
+              height: 10,
             ),
-            Container(height: 150, child: Carousel()),
+            Container(child: Carousel()),
             const SizedBox(
               height: 30,
             ),
@@ -181,36 +181,38 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  buildServiceItem(
-                    'Hairstyling',
-                    'Rs. 1000',
-                    f1,
-                  ),
-                  const SizedBox(width: 6.0),
-                  buildServiceItem(
-                    'Bridal Makeup with\nhairstyle',
-                    'Rs. 1000',
-                    f2,
-                  ),
-                ],
-              ),
-            ),
+
+            // Padding(
+            //   padding: const EdgeInsets.all(10.0),
+            //   child: Row(
+            //     children: [
+            //       buildServiceItem(
+            //         'Hairstyling',
+            //         'Rs. 1000',
+            //         f1,
+            //       ),
+            //       const SizedBox(width: 6.0),
+            //       buildServiceItem(
+            //         'Bridal Makeup with\nhairstyle',
+            //         'Rs. 1000',
+            //         f2,
+            //       ),
+            //     ],
+            //   ),
+            // ),
             const SizedBox(height: 1),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: [
-                  buildServiceItem('Makeup', 'Rs. 1000', f3),
-                  const SizedBox(width: 6.0),
-                  buildServiceItem(
-                      'Bridal Makeup with\nhairstyle', 'Rs. 1000', f4),
-                ],
-              ),
-            ),
+            const Featuredscreen(),
+            // Padding(
+            //   padding: const EdgeInsets.all(10.0),
+            //   child: Row(
+            //     children: [
+            //       buildServiceItem('Makeup', 'Rs. 1000', f3),
+            //       const SizedBox(width: 6.0),
+            //       buildServiceItem(
+            //           'Bridal Makeup with\nhairstyle', 'Rs. 1000', f4),
+            //     ],
+            //   ),
+            // ),
             const SizedBox(
               height: 15,
             ),
