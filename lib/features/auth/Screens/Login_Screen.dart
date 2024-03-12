@@ -151,7 +151,7 @@ class LoginScreen extends StatelessWidget {
                   // loading: loginview.loginLoading,
                   onPress: () {
                     if (!_formKey.currentState!.validate()) {
-                      // Navigator.pushNamed(context, RoutesName.home);
+                      Navigator.pushNamed(context, RoutesName.home);
                       print('Api hit');
                     } else {
                       Map data = {
