@@ -9,6 +9,7 @@ import 'package:murarkey/features/auth/Screens/Signup_screen.dart';
 import 'package:murarkey/features/auth/Screens/create_new.dart';
 import 'package:murarkey/features/auth/Screens/forgotpassword_screen.dart';
 import 'package:murarkey/features/auth/Screens/otp_screen.dart';
+import 'package:murarkey/features/auth/Screens/password_changed.dart';
 import 'package:murarkey/features/auth/Screens/welcome_screen.dart';
 import 'package:murarkey/features/auth/splash/splash_screen.dart';
 import 'package:murarkey/features/home/screens/home_screens.dart';
@@ -43,6 +44,9 @@ class Routes {
         return _pageRoute(const Coursetwo());
       case RoutesName.createnew:
         return _pageRoute(const Createnew());
+      case RoutesName.Passwordchanged:
+        return _pageRoute(const Passwordchanger());
+
       // case RoutesName.mainscreen:
       // return _pageRoute(Mainscreen());
     }

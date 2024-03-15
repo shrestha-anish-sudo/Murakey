@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/features/auth/provider/password_provider.dart';
 import 'package:murarkey/features/home/widgets/back_arrow.dart';
 import 'package:murarkey/res/colors.dart';
@@ -130,7 +131,14 @@ class Createnew extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: RoundButton(title: 'Reset Password', onPress: () {}),
+                child: RoundButton(
+                    title: 'Reset Password',
+                    onPress: () {
+                      // if (!_formKey.currentState!.validate()) {
+                      //       print('DOne');
+                      //     }
+                      Navigator.pushNamed(context, RoutesName.Passwordchanged);
+                    }),
               ),
             ],
           ),

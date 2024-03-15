@@ -14,4 +14,5 @@ class RoutesName {
   static const String createnew = 'Create_new_password';
   static const String coursetwo = 'Course_two';
   static const String mainscreen = 'Main_screen';
+  static const String Passwordchanged = "password Changed";
 }

@@ -29,8 +29,4 @@ const String ca1 = "assets/images/Ca1.png";
 const String ca2 = "assets/images/Ca2.png";
 const String ca3 = "assets/images/Ca3.png";
 const String ca4 = "assets/images/Ca4.png";
-
-
-
-
-
+const String Sucess = "assets/images/Successmark.png";
