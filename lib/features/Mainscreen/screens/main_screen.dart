@@ -15,11 +15,9 @@ class Mainscreen extends StatelessWidget {
     return Scaffold(
       body: _getWidgetForIndex(context),
       bottomNavigationBar: ClipPath(
-        clipper: ShapeBorderClipper(
-          shape: UShapeBorder(),
-        ),
+        clipper: BNBCustomClipper(),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border(
               top: BorderSide(
                   width: 1.0, color: Colors.grey), // Add the border here
@@ -30,24 +28,31 @@ class Mainscreen extends StatelessWidget {
             onTap: (index) {
               context.read<NavigationProvider>().setIndex(index);
             },
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.home_outlined,
                   color: AppColor.black,
                 ),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.book,
+                  Icons.school_outlined,
                   color: AppColor.black,
                 ),
                 label: 'Courses',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.shopping_cart,
+                  Icons.add,
+                  color: AppColor.black,
+                ),
+                label: 'Add',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.shopping_cart_outlined,
                   color: AppColor.black,
                 ),
                 label: 'Cart',
@@ -83,33 +88,27 @@ class Mainscreen extends StatelessWidget {
   }
 }
 
-class UShapeBorder extends ShapeBorder {
-  const UShapeBorder();
-
+class BNBCustomClipper extends CustomClipper<Path> {
   @override
-  EdgeInsetsGeometry get dimensions => EdgeInsets.zero;
-
-  @override
-  Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
-    return getOuterPath(rect, textDirection: textDirection);
-  }
-
-  @override
-  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
-    final path = Path();
-    path.moveTo(rect.left, rect.top);
-    path.lineTo(rect.left, rect.bottom - 20); // U shape indentation
-    path.quadraticBezierTo(
-        rect.width / 2, rect.bottom, rect.right, rect.bottom - 20);
-    path.lineTo(rect.right, rect.top);
+  Path getClip(Size size) {
+    Path path = Path()..moveTo(0, 0);
+    path.lineTo(0, size.height - 20); // Top left corner
+    path.quadraticBezierTo(size.width * .20, size.height, size.width * .20,
+        size.height); // Top curve
+    path.quadraticBezierTo(size.width * .25, size.height, size.width * .25,
+        size.height - 20); // Top right corner
+    path.lineTo(size.width * .75, size.height - 20); // Bottom right corner
+    path.quadraticBezierTo(size.width * .80, size.height, size.width,
+        size.height - 20); // Bottom curve
+    path.lineTo(size.width, 0); // Bottom right corner
+    path.lineTo(0, 0); // Bottom right corner
+    path.close();
     return path;
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {}
-
-  @override
-  ShapeBorder scale(double t) {
-    return UShapeBorder();
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
+ 

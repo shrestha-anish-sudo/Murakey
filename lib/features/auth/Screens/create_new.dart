@@ -137,7 +137,7 @@ class Createnew extends StatelessWidget {
                       // if (!_formKey.currentState!.validate()) {
                       //       print('DOne');
                       //     }
-                      Navigator.pushNamed(context, RoutesName.Passwordchanged);
+                      Navigator.pushNamed(context, RoutesName.otpscreen);
                     }),
               ),
             ],
