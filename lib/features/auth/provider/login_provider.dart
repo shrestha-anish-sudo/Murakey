@@ -8,14 +8,6 @@ class Loginprovider with ChangeNotifier {
   
   Loginprovider({required this.authRepository});
 
-  bool _loginLoading = false;
-  bool get loginLoading => _loginLoading;
-
-  setLoginLoading(bool value) {
-    _loginLoading = value;
-    notifyListeners();
-  }
-
   // Creating getter method to store the value of the input phone number
   String _phoneNumber = '';
   String get phoneNumber => _phoneNumber;
@@ -32,19 +24,19 @@ class Loginprovider with ChangeNotifier {
     _password = password;
   }
 
-  Future<UserModel> loginApi(dynamic data) async {
-    try {
-      setLoginLoading(true);
-      final response = await authRepository.LoginApi(data);
-      // await SessionController().saveUserInPreference(response);
-      // await SessionController().getUserFromPreference();
-      setLoginLoading(false);
-      return response;
-    } catch (e) {
-      setLoginLoading(false);
-      throw Exception(e);
-    }
-  }
+  // Future<UserModel> loginApi(dynamic data) async {
+  //   try {
+  //     setLoginLoading(true);
+  //     final response = await authRepository.LoginApi(data);
+  //     // await SessionController().saveUserInPreference(response);
+  //     // await SessionController().getUserFromPreference();
+  //     setLoginLoading(false);
+  //     return response;
+  //   } catch (e) {
+  //     setLoginLoading(false);
+  //     throw Exception(e);
+  //   }
+  // }
 }
 
 

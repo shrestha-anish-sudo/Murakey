@@ -4,6 +4,7 @@ import 'package:murarkey/features/Cart/Screens/Cart_screen.dart';
 import 'package:murarkey/features/Category/Screens/category_screen.dart';
 import 'package:murarkey/features/Category/Screens/course1.dart';
 import 'package:murarkey/features/Category/Screens/course2.dart';
+import 'package:murarkey/features/Mainscreen/screens/main_screen.dart';
 import 'package:murarkey/features/auth/Screens/Login_Screen.dart';
 import 'package:murarkey/features/auth/Screens/Signup_screen.dart';
 import 'package:murarkey/features/auth/Screens/create_new.dart';
@@ -46,6 +47,8 @@ class Routes {
         return _pageRoute(const Createnew());
       case RoutesName.Passwordchanged:
         return _pageRoute(const Passwordchanger());
+      case RoutesName.mainscreen:
+        return _pageRoute(const Mainscreen());
 
       // case RoutesName.mainscreen:
       // return _pageRoute(Mainscreen());

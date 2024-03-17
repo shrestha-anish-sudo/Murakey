@@ -23,4 +23,14 @@ class AuthRepository {
       throw e;
     }
   }
+
+  Future<dynamic> forgotpasswordApi(dynamic data) async {
+    try {
+      dynamic response =
+          await _apiServices.getApiResponse(AppUrl.forgotPasswordEndpoint);
+      return response;
+    } catch (e) {
+      throw e;
+    }
+  }
 }

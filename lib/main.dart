@@ -6,7 +6,6 @@ import 'package:murarkey/features/Cart/provider/cart_provider.dart';
 import 'package:murarkey/features/Category/Provider/categoryprovider.dart';
 import 'package:murarkey/features/Mainscreen/Provider/tabprovider.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
-import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/provider/password_provider.dart';
 import 'package:murarkey/features/home/provider/favroite_provider.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
@@ -25,17 +24,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      
         providers: [
           ChangeNotifierProvider(create: (_) => BottomNavigationBarProvider()),
-          ChangeNotifierProvider(
-              create: (_) => Loginprovider(authRepository: getIt())),
+
           ChangeNotifierProvider(create: (_) => CartProvider()),
           ChangeNotifierProvider(create: (_) => Passwordvisibility()),
           ChangeNotifierProvider(create: (_) => AuthProvider()),
           ChangeNotifierProvider(create: (_) => FavoriteProvider()),
           ChangeNotifierProvider(create: (_) => ProductProvider()),
-          ChangeNotifierProvider(create: (_) => TabProvider()),
+          ChangeNotifierProvider(create: (_) => NavigationProvider()),
           ChangeNotifierProvider(create: (_) => ImageEnlargeNotifier()),
           ChangeNotifierProvider(create: (_) => ImageGalleryState()),
           ChangeNotifierProvider(create: (_) => IconButtonVisibilityNotifier()),

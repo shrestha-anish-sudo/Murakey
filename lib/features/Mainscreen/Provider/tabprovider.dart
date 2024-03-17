@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
-class TabProvider with ChangeNotifier {
-  int _currentIndex = 0;
+class NavigationProvider extends ChangeNotifier {
+  int _selectedIndex = 0;
 
-  int get currentIndex => _currentIndex;
+  int get selectedIndex => _selectedIndex;
 
   void setIndex(int index) {
-    _currentIndex = index;
+    _selectedIndex = index;
     notifyListeners();
   }
 }

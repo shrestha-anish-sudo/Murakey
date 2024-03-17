@@ -143,7 +143,7 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Container(child: Carousel()),
+            // Container(child: Carousel()),
             const SizedBox(
               height: 30,
             ),
@@ -201,7 +201,7 @@ class Homescreen extends StatelessWidget {
             //   ),
             // ),
             const SizedBox(height: 1),
-            const Featuredscreen(),
+            // const Featuredscreen(),
             // Padding(
             //   padding: const EdgeInsets.all(10.0),
             //   child: Row(

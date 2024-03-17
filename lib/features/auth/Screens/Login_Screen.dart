@@ -3,7 +3,6 @@ import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
-import 'package:murarkey/features/auth/provider/login_provider.dart';
 import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/features/home/widgets/back_arrow.dart';
@@ -148,19 +147,18 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 RoundButton(
                   title: 'Login',
-                  // loading: loginview.loginLoading,
+                  loading: authview.loading,
                   onPress: () {
                     if (!_formKey.currentState!.validate()) {
                       Navigator.pushNamed(context, RoutesName.home);
                       print('Api hit');
                     } else {
                       Map data = {
-                        // 'phoneNumber' : loginview.phoneNumber.toString(),
-
-                        // 'password': loginview.password.toString(),
+                        'phoneNumber': _phoneController.toString(),
+                        'password': _passwordController.toString(),
                       };
                       authview.loginApi(data, context).then((value) {
-                        // Navigator.pushNamed(context, RoutesName.home);
+                        Navigator.pushNamed(context, RoutesName.home);
                       }).onError((error, stackTrace) {
                         Utils.flushBarErrorMessage(error.toString(), context);
                       });

@@ -61,4 +61,24 @@ class AuthProvider with ChangeNotifier {
       }
     });
   }
+
+  Future<void> forgotPassword(dynamic data, BuildContext context) async {
+    setLoading(true);
+
+    _myRepo.forgotpasswordApi(data).then((value) {
+      setLoading(false);
+
+      Utils.snackBar('OTP sent successfully', context);
+      Navigator.pushNamed(context, RoutesName.otpscreen);
+      if (kDebugMode) {
+        print(value.toString());
+      }
+    }).onError((error, stackTrace) {
+      setLoading(false);
+      Utils.snackBar(error.toString(), context);
+      if (kDebugMode) {
+        print(error.toString());
+      }
+    });
+  }
 }
