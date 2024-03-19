@@ -13,6 +13,11 @@ class AuthProvider with ChangeNotifier {
   bool _signUpLoading = false;
   bool get signUpLoading => _signUpLoading;
 
+  bool _isLoggedIn = false;
+  bool get isLoggedIn => _isLoggedIn;
+  bool _isRegistered = false;
+  bool get isRegistered => _isRegistered;
+
   setLoading(bool value) {
     _loading = value;
     notifyListeners();
@@ -23,12 +28,17 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  setLoggedIn(bool value) {
+    _isLoggedIn = value;
+    notifyListeners();
+  }
+
   Future<void> loginApi(dynamic data, BuildContext context) async {
     setLoading(true);
 
     _myRepo.LoginApi(data).then((value) {
       setLoading(false);
-
+      setLoggedIn(true); // User logged in successfully
       Utils.snackBar('Login Successfully', context);
       Navigator.pushNamed(context, RoutesName.home);
       if (kDebugMode) {

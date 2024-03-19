@@ -147,9 +147,7 @@ class SignUp extends StatelessWidget {
                     child: PasswordTextField(
                       passwordController: _passwordController,
                       passwordFocusNode: _passwordFocusNode,
-                      
                     ),
-                    
                   ),
                   const SizedBox(
                     height: 10,
@@ -193,10 +191,36 @@ class SignUp extends StatelessWidget {
                     title: 'SignUp',
                     onPress: () async {
                       if (_formKey.currentState!.validate()) {
-                        print('Api hit');
+                        // Construct the data map for signup
+                        Map<String, dynamic> data = {
+                          'phoneNumber': _phoneController.text,
+                          'password': _passwordController.text,
+                        };
+
+                        // Access the AuthProvider using Provider.of
+                        AuthProvider authProvider =
+                            Provider.of<AuthProvider>(context, listen: false);
+
+                        // Call the signUpApi method from the AuthProvider
+                        await authProvider
+                            .signUpApi(data, context)
+                            .then((value) {
+                          // Check if registration was successful before navigating to the login screen
+                          if (authProvider.isRegistered) {
+                            Navigator.pushNamed(context, RoutesName.login);
+                          } else {
+                            // Registration failed
+                            Utils.flushBarErrorMessage(
+                                'Sign up failed', context);
+                          }
+                        }).catchError((error) {
+                          // Handle error during registration
+                          Utils.flushBarErrorMessage(error.toString(), context);
+                        });
                       }
                     },
                   ),
+
                   const SizedBox(height: 30),
                   const Text(
                     'Or Sign Up with',

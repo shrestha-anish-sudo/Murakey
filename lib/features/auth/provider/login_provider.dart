@@ -28,7 +28,7 @@ class Loginprovider with ChangeNotifier {
   //   try {
   //     setLoginLoading(true);
   //     final response = await authRepository.LoginApi(data);
-  //     // await SessionController().saveUserInPreference(response);
+  //     // await SessionController().saveUserInPreference(Fresponse);
   //     // await SessionController().getUserFromPreference();
   //     setLoginLoading(false);
   //     return response;

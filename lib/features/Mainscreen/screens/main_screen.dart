@@ -62,7 +62,7 @@ class Mainscreen extends StatelessWidget {
                   Icons.favorite_border_outlined,
                   color: AppColor.black,
                 ),
-                label: 'Profile',
+                label: 'Favourites',
               ),
             ],
           ),
@@ -111,4 +111,3 @@ class BNBCustomClipper extends CustomClipper<Path> {
     return false;
   }
 }
- 

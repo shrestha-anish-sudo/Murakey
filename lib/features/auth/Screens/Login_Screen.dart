@@ -145,21 +145,22 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                RoundButton(
+                 RoundButton(
                   title: 'Login',
                   loading: authview.loading,
                   onPress: () {
-                    if (!_formKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, RoutesName.home);
-                      print('Api hit');
-                    } else {
+                    if (_formKey.currentState!.validate()) {
                       Map data = {
-                        'phoneNumber': _phoneController.toString(),
-                        'password': _passwordController.toString(),
+                        'phoneNumber': _phoneController.text,
+                        'password': _passwordController.text,
                       };
                       authview.loginApi(data, context).then((value) {
-                        Navigator.pushNamed(context, RoutesName.home);
-                      }).onError((error, stackTrace) {
+                        if (authview.isLoggedIn) {
+                          Navigator.pushNamed(context, RoutesName.home);
+                        } else {
+                          Utils.flushBarErrorMessage('Login failed', context);
+                        }
+                      }).catchError((error) {
                         Utils.flushBarErrorMessage(error.toString(), context);
                       });
                     }
