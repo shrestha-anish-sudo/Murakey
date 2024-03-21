@@ -1,15 +1,18 @@
-import 'package:flutter/src/widgets/basic.dart';
-
 class CarouselItem {
   String? status;
-  Data? data;
+  List<Data>? data;
   String? message;
 
   CarouselItem({this.status, this.data, this.message});
 
   CarouselItem.fromJson(Map<String, dynamic> json) {
     status = json['status'];
-    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(new Data.fromJson(v));
+      });
+    }
     message = json['message'];
   }
 
@@ -17,7 +20,7 @@ class CarouselItem {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['status'] = this.status;
     if (this.data != null) {
-      data['data'] = this.data!.toJson();
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     data['message'] = this.message;
     return data;
@@ -59,6 +62,4 @@ class Data {
     data['updated'] = this.updated;
     return data;
   }
-
-  map(Builder Function(dynamic data) param0) {}
 }

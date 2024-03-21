@@ -19,8 +19,7 @@ class PasswordTextField extends StatelessWidget {
     return SizedBox(
       height: 30,
       child: TextFormField(
-        // controller: widget.passwordController,
-        // focusNode: widget.passwordFocusNode,
+      
         decoration: InputDecoration(
           hintText: 'Enter your password',
           prefixIcon: Icon(Icons.security_outlined),
@@ -36,7 +35,7 @@ class PasswordTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-         
+
         obscureText: passwordVisibilityNotifier.obscurePassword,
         validator: (value) {
           if (value!.isEmpty) {

@@ -1,5 +1,6 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Routes/routes.dart';
 import 'package:murarkey/features/Cart/provider/cart_provider.dart';
@@ -12,11 +13,19 @@ import 'package:murarkey/features/home/provider/home_provider.dart';
 import 'package:murarkey/features/home/provider/product_provider.dart';
 import 'package:provider/provider.dart';
 
-GetIt getIt = GetIt.instance;
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   // getIt.registerLazySingleton<AuthRepository>(() => AuthHttpApiRepository());
+  HttpOverrides.global = MyHttpOverrides();
   runApp(MyApp());
 }
 

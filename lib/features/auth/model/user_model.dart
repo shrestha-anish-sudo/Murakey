@@ -34,7 +34,7 @@ class Data {
   String? phoneNumber;
   bool? verified;
   bool? isBlocked;
-  Null? blockedMessage;
+  String? blockedMessage;
   String? inserted;
   String? updated;
 

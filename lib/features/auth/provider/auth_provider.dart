@@ -33,6 +33,20 @@ class AuthProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  String _password = '';
+  String get password => _password;
+
+  setPassword(String password) {
+    _password = password;
+  }
+
+  String _phoneNumber = '';
+  String get phoneNumber => _phoneNumber;
+
+  setPhoneNumber(String phoneNumber) {
+    _phoneNumber = phoneNumber;
+  }
+
   Future<void> loginApi(dynamic data, BuildContext context) async {
     setLoading(true);
 
@@ -58,16 +72,18 @@ class AuthProvider with ChangeNotifier {
 
     _myRepo.signUpapi(data).then((value) {
       setSignUpLoading(false);
-      Utils.snackBar('SignUp Successfully', context);
+      Utils.snackBar('Sign Up Successfully', context);
       Navigator.pushNamed(context, RoutesName.login);
       if (kDebugMode) {
         print(value.toString());
       }
-    }).onError((error, stackTrace) {
+    }).catchError((error) {
       setSignUpLoading(false);
       Utils.snackBar(error.toString(), context);
       if (kDebugMode) {
+        print("======");
         print(error.toString());
+        print("======");
       }
     });
   }

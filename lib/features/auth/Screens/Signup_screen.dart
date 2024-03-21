@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
 import 'package:murarkey/features/auth/provider/password_provider.dart';
-import 'package:murarkey/features/auth/widget/password_text_field.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/features/home/widgets/back_arrow.dart';
 import 'package:murarkey/res/colors.dart';
@@ -27,7 +25,7 @@ class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final passwordVisibilityNotifier = Provider.of<Passwordvisibility>(context);
-    final authprovider = Provider.of<AuthProvider>(context);
+    final authview = Provider.of<AuthProvider>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -144,9 +142,34 @@ class SignUp extends StatelessWidget {
                   ),
                   SizedBox(
                     height: 60,
-                    child: PasswordTextField(
-                      passwordController: _passwordController,
-                      passwordFocusNode: _passwordFocusNode,
+                    child: TextFormField(
+                      controller: _passwordController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your password',
+                        prefixIcon: Icon(Icons.security_outlined),
+                        suffixIcon: InkWell(
+                          onTap: () {
+                            passwordVisibilityNotifier
+                                .togglePasswordVisibility();
+                          },
+                          child: Icon(passwordVisibilityNotifier.obscurePassword
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      obscureText: passwordVisibilityNotifier.obscurePassword,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          Utils.toastMessage('Please enter a password');
+                        } else if (value.length < 8) {
+                          Utils.toastMessage(
+                              'Password must be at least 8 characters');
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   const SizedBox(
@@ -188,39 +211,33 @@ class SignUp extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   RoundButton(
-                    title: 'SignUp',
-                    onPress: () async {
+                    title: 'Sign Up',
+                    loading: authview
+                        .signUpLoading, // Assuming you have signUpLoading property in your AuthProvider
+                    onPress: () {
                       if (_formKey.currentState!.validate()) {
-                        // Construct the data map for signup
-                        Map<String, dynamic> data = {
+                        print("mydata");
+                        Map data = {
+                          'username': _nameController.text,
                           'phoneNumber': _phoneController.text,
                           'password': _passwordController.text,
+                          'confirmPassword': _confirmPasswordController.text,
                         };
 
-                        // Access the AuthProvider using Provider.of
-                        AuthProvider authProvider =
-                            Provider.of<AuthProvider>(context, listen: false);
-
-                        // Call the signUpApi method from the AuthProvider
-                        await authProvider
-                            .signUpApi(data, context)
-                            .then((value) {
-                          // Check if registration was successful before navigating to the login screen
-                          if (authProvider.isRegistered) {
+                        authview.signUpApi(data, context).then((value) {
+                          if (authview.isRegistered) {
+                            // Navigate to appropriate screen after successful signup
                             Navigator.pushNamed(context, RoutesName.login);
                           } else {
-                            // Registration failed
                             Utils.flushBarErrorMessage(
-                                'Sign up failed', context);
+                                'Sign Up failed', context);
                           }
                         }).catchError((error) {
-                          // Handle error during registration
                           Utils.flushBarErrorMessage(error.toString(), context);
                         });
                       }
                     },
                   ),
-
                   const SizedBox(height: 30),
                   const Text(
                     'Or Sign Up with',

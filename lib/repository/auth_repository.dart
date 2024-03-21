@@ -5,6 +5,7 @@ import 'package:murarkey/res/app_url.dart';
 class AuthRepository {
   final BaseApiServices _apiServices = NetworkApiService();
   Future<dynamic> LoginApi(dynamic data) async {
+    print("Hello Listening to the method");
     try {
       dynamic response =
           await _apiServices.getPostApiResponse(AppUrl.loginEndPoint, data);
@@ -16,11 +17,11 @@ class AuthRepository {
 
   Future<dynamic> signUpapi(dynamic data) async {
     try {
-      dynamic response =
-          await _apiServices.getApiResponse(AppUrl.registerApiEndpoint);
+      dynamic response = await _apiServices.getPostApiResponse(
+          AppUrl.registerApiEndpoint, data);
       return response;
     } catch (e) {
-      throw e;
+      rethrow;
     }
   }
 

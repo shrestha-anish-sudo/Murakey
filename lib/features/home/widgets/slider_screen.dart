@@ -7,6 +7,7 @@ import 'package:murarkey/features/home/services/slider_services.dart';
 class Carousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('API Hit');
     return FutureBuilder<CarouselItem>(
       future: SliderService.fetchCarouselData(),
       builder: (context, snapshot) {

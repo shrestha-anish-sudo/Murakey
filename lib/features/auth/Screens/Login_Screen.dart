@@ -3,7 +3,7 @@ import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Utils.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/auth/provider/auth_provider.dart';
-import 'package:murarkey/features/auth/widget/password_text_field.dart';
+import 'package:murarkey/features/auth/provider/password_provider.dart';
 import 'package:murarkey/features/auth/widget/social_buttons.dart';
 import 'package:murarkey/features/home/widgets/back_arrow.dart';
 import 'package:murarkey/res/colors.dart';
@@ -22,6 +22,8 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authview = Provider.of<AuthProvider>(context);
+    final passwordVisibilityNotifier = Provider.of<Passwordvisibility>(context);
+
     // final loginview = Provider.of<Loginprovider>(context);
 
     return SafeArea(
@@ -119,9 +121,33 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 60,
-                  child: PasswordTextField(
-                    passwordController: _passwordController,
-                    passwordFocusNode: _passwordFocusNode,
+                  child: TextFormField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter your password',
+                      prefixIcon: Icon(Icons.security_outlined),
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          passwordVisibilityNotifier.togglePasswordVisibility();
+                        },
+                        child: Icon(passwordVisibilityNotifier.obscurePassword
+                            ? Icons.visibility_off_outlined
+                            : Icons.visibility_outlined),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    obscureText: passwordVisibilityNotifier.obscurePassword,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        Utils.toastMessage('Please enter a password');
+                      } else if (value.length < 8) {
+                        Utils.toastMessage(
+                            'Password must be at least 8 characters');
+                      }
+                      return null;
+                    },
                   ),
                 ),
                 const SizedBox(
@@ -145,11 +171,12 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                 RoundButton(
+                RoundButton(
                   title: 'Login',
                   loading: authview.loading,
                   onPress: () {
                     if (_formKey.currentState!.validate()) {
+                      print("mydata");
                       Map data = {
                         'phoneNumber': _phoneController.text,
                         'password': _passwordController.text,

@@ -15,10 +15,12 @@ class SliderService {
 
   static Future<CarouselItem> fetchCarouselData() async {
     try {
+      print('check' + AppUrl.sliderapi);
       final response = await http.get(Uri.parse(AppUrl.sliderapi));
       if (response.statusCode == 200) {
         return CarouselItem.fromJson(jsonDecode(response.body));
-      } switch (response.statusCode) {
+      }
+      switch (response.statusCode) {
         case 200:
           dynamic responseJson = jsonDecode(response.body);
           return responseJson;

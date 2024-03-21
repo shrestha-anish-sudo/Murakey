@@ -15,25 +15,25 @@ class AuthRepository {
       throw e;
     }
   }
-   Future<UserModel> SignupApi(dynamic data) async {
+
+  Future<UserModel> SignupApi(dynamic data) async {
     try {
-      dynamic response =
-          await _apiServices.getPostApiResponse(AppUrl.registerApiEndpoint, data);
+      dynamic response = await _apiServices.getPostApiResponse(
+          AppUrl.registerApiEndpoint, data);
       return response;
     } catch (e) {
       throw e;
     }
-
   }
+
   Future<void> forgotPassword(dynamic data) async {
     try {
-      await _apiServices.getPostApiResponse(AppUrl.forgotPasswordEndpoint, data);
+      dynamic response =
+      await _apiServices.getPostApiResponse(
+          AppUrl.forgotPasswordEndpoint, data);
+      return response;
     } catch (e) {
       throw e;
     }
   }
 }
- 
-
-
-
