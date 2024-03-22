@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:murarkey/Data/app_exceptions.dart';
 import 'package:murarkey/features/home/Models/servicesmodel.dart';
+import 'package:murarkey/res/app_url.dart';
 
 class FeaturedServices {
   static Future<ServicesModel> fetchServicesData() async {
     try {
-      final response =
-          await http.get(Uri.parse('http://192.168.1.24:8000/api/v1/services'));
+      final response = await http.get(Uri.parse(AppUrl.getservices));
       if (response.statusCode == 200) {
         return ServicesModel.fromJson(jsonDecode(response.body));
       }

@@ -4,4 +4,5 @@ class AppUrl {
   static var registerApiEndpoint = baseUrl + '/api/v1/customers/register';
   static var forgotPasswordEndpoint = baseUrl + '';
   static var sliderapi = baseUrl + '/api/v1/sliders';
+  static var getservices = baseUrl + '/api/v1/services';
 }

@@ -78,7 +78,7 @@ class SignUp extends StatelessWidget {
                       keyboardType: TextInputType.text,
                       focusNode: _nameFocusNode,
                       decoration: InputDecoration(
-                        hintText: 'Username',
+                        hintText: 'Full Name',
                         prefixIcon: const Icon(Icons.person),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
@@ -218,7 +218,7 @@ class SignUp extends StatelessWidget {
                       if (_formKey.currentState!.validate()) {
                         print("mydata");
                         Map data = {
-                          'username': _nameController.text,
+                          'Full Name': _nameController.text,
                           'phoneNumber': _phoneController.text,
                           'password': _passwordController.text,
                           'confirmPassword': _confirmPasswordController.text,

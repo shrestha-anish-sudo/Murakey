@@ -67,7 +67,7 @@ class Welcomescreen extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   print("guest");
-                  Navigator.pushNamed(context, RoutesName.mainscreen);
+                  Navigator.pushNamed(context, RoutesName.home1);
                 },
                 child: const Text(
                   'Continue as a guest',
