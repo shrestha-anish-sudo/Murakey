@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
@@ -13,6 +14,7 @@ import 'package:murarkey/features/home/widgets/image_gallery.dart';
 import 'package:murarkey/features/home/widgets/search_bar.dart';
 import 'package:murarkey/features/home/widgets/slider_screen.dart';
 import 'package:murarkey/res/colors.dart';
+import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class Homescreen extends StatelessWidget {
@@ -20,6 +22,9 @@ class Homescreen extends StatelessWidget {
   CarouselController _carouselController = CarouselController();
 
   Homescreen({Key});
+  String? _username;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -449,9 +454,15 @@ class Homescreen extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: Row(
                 children: [
-                  buildCourseItem('Self Makeup', c2, () {}),
+                  buildCourseItem('Self Makeup', c2, () {
+                  Navigator.pushNamed(context, RoutesName.coursetwo);
+
+                  }),
                   const SizedBox(width: 10.0),
-                  buildCourseItem('Self Makeup', c2, () {}),
+                  buildCourseItem('Self Makeup', c2, () {
+                  Navigator.pushNamed(context, RoutesName.coursetwo);
+
+                  }),
                 ],
               ),
             ),

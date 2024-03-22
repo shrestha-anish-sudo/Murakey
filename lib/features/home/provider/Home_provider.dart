@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class TabSelectionNotifier extends ChangeNotifier {
   int _selectedIndex = 0;
@@ -69,6 +72,20 @@ class IconButtonVisibilityNotifier extends ChangeNotifier {
   }
 }
 
+class UserProvider extends ChangeNotifier {
+  String? _username;
 
+  String? get username => _username;
 
-
+  Future<void> fetchUsername() async {
+    final response =
+        await http.get(Uri.parse('https://example.com/api/username'));
+    if (response.statusCode == 200) {
+      final jsonData = jsonDecode(response.body);
+      _username = jsonData['username'];
+      notifyListeners();
+    } else {
+      throw Exception('Failed to load username');
+    }
+  }
+}

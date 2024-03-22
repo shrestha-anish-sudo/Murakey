@@ -183,7 +183,7 @@ class LoginScreen extends StatelessWidget {
                       };
                       authview.loginApi(data, context).then((value) {
                         if (authview.isLoggedIn) {
-                          Navigator.pushNamed(context, RoutesName.home);
+                          Navigator.pushNamed(context, RoutesName.mainscreen);
                         } else {
                           Utils.flushBarErrorMessage('Login failed', context);
                         }

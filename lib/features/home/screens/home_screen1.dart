@@ -437,11 +437,10 @@ class Homescreen1 extends StatelessWidget {
               child: Row(
                 children: [
                   buildCourseItem('Self Makeup', c1, () {
-                    Navigator.pushNamed(context, RoutesName.courseone);
+                   
                   }),
                   const SizedBox(width: 6.0),
                   buildCourseItem('Self Makeup', c2, () {
-                    Navigator.pushNamed(context, RoutesName.coursetwo);
                   }),
                 ],
               ),

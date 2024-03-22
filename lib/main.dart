@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => IconButtonVisibilityNotifier()),
           ChangeNotifierProvider(create: (_) => FormProvider()),
           ChangeNotifierProvider(create: (_) => TabSelectionNotifier()),
+          ChangeNotifierProvider(create: (_) => UserProvider()),
 
           // Add other providers as needed
         ],
