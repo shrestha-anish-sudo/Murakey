@@ -13,6 +13,7 @@ import 'package:murarkey/features/auth/Screens/otp_screen.dart';
 import 'package:murarkey/features/auth/Screens/password_changed.dart';
 import 'package:murarkey/features/auth/Screens/welcome_screen.dart';
 import 'package:murarkey/features/auth/splash/splash_screen.dart';
+import 'package:murarkey/features/home/Products/product_one.dart';
 import 'package:murarkey/features/home/screens/home_screen1.dart';
 import 'package:murarkey/features/home/screens/home_screens.dart';
 import 'package:murarkey/features/profile/screens/Profile_screens.dart';
@@ -51,7 +52,9 @@ class Routes {
       case RoutesName.mainscreen:
         return _pageRoute(const Mainscreen());
       case RoutesName.home1:
-        return _pageRoute( Homescreen1());
+        return _pageRoute(Homescreen1());
+      case RoutesName.naill:
+        return _pageRoute(const Productone());
 
       // case RoutesName.mainscreen:
       // return _pageRoute(Mainscreen());

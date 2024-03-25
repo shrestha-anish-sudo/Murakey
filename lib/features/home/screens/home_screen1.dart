@@ -143,7 +143,7 @@ class Homescreen1 extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            CarouselSliderPage(),
+            // CarouselSliderPage(),
 
             const SizedBox(
               height: 30,
@@ -277,8 +277,10 @@ class Homescreen1 extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  buildProductItem(
-                      context, 'Nail Extension', p1, 'Popular', () {}),
+                  buildProductItem(context, 'Nail Extension', p1, 'Popular',
+                      () {
+                    Navigator.pushNamed(context, RoutesName.naill);
+                  }),
                   buildProductItem(
                       context, 'Mani-Pedi', p2, 'Top Rated', () {}),
                   buildProductItem(
