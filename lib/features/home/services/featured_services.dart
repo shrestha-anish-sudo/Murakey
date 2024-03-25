@@ -1,32 +1,62 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:murarkey/Data/app_exceptions.dart';
 import 'package:murarkey/features/home/Models/servicesmodel.dart';
 import 'package:murarkey/res/app_url.dart';
 
-class FeaturedServices {
-  static Future<ServicesModel> fetchServicesData() async {
-    try {
-      final response = await http.get(Uri.parse(AppUrl.getservices));
-      if (response.statusCode == 200) {
-        return ServicesModel.fromJson(jsonDecode(response.body));
-      }
-      switch (response.statusCode) {
-        case 200:
-          dynamic responseJson = jsonDecode(response.body);
-          return responseJson;
-        case 400:
-          throw BadRequestException(response.body.toString());
-        case 500:
-        case 404:
-          throw UnauthorisedException(response.body.toString());
-        default:
-          throw FetchDataException(
-              'Error occured while communicating with server');
-      }
-    } catch (e) {
-      throw Exception('Error fetching data: $e');
+class FeaturedServices extends StatelessWidget {
+  Future<Featuredservices?> fetchData() async {
+    final response =
+        await http.get(Uri.parse(AppUrl.getservices));
+
+    if (response.statusCode == 200) {
+      // If the server returns a 200 OK response, parse the JSON
+      return Featuredservices.fromJson(jsonDecode(response.body));
+    } else {
+      // If the server did not return a 200 OK response, throw an exception.
+      throw Exception('Failed to load data');
     }
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: FutureBuilder<Featuredservices?>(
+          future: fetchData(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator(); // While waiting for data
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else {
+              // Once data is loaded
+              final data = snapshot.data!.data;
+              return ListView.builder(
+                itemCount: data!.length,
+                itemBuilder: (context, index) {
+                  final service = data[index];
+                  return ListTile(
+                    title: Text(service.name ?? 'No name'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(service.category?.name ?? 'No category'),
+                        Text(service.location ?? 'No location'),
+                        Text('Buy Rate: ${service.buyRate ?? 'Unknown'}'),
+                      ],
+                    ),
+                    leading: service.image != null
+                        ? Image.network(service.image!,
+                            width: 50, height: 50, fit: BoxFit.cover)
+                        : Icon(Icons.image),
+                  );
+                },
+              );
+            }
+          },
+        ),
+      ),
+    );
   }
 }

@@ -1,19 +1,17 @@
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
-import 'package:murarkey/features/home/screens/featured_screens.dart';
 import 'package:murarkey/features/home/services/build_courses.dart';
 import 'package:murarkey/features/home/services/build_product.dart';
 import 'package:murarkey/features/home/services/build_service.dart';
+import 'package:murarkey/features/home/services/slider_services.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/features/home/widgets/home_icons.dart';
 import 'package:murarkey/features/home/widgets/image_gallery.dart';
 // import 'package:murarkey/features/home/widgets/image_gallery.dart';
 import 'package:murarkey/features/home/widgets/search_bar.dart';
-import 'package:murarkey/features/home/widgets/slider_screen.dart';
 import 'package:murarkey/res/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -145,7 +143,8 @@ class Homescreen1 extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            // Container(child: Carousel()),
+            CarouselSliderPage(),
+
             const SizedBox(
               height: 30,
             ),
@@ -436,12 +435,9 @@ class Homescreen1 extends StatelessWidget {
               padding: const EdgeInsets.all(6.0),
               child: Row(
                 children: [
-                  buildCourseItem('Self Makeup', c1, () {
-                   
-                  }),
+                  buildCourseItem('Self Makeup', c1, () {}),
                   const SizedBox(width: 6.0),
-                  buildCourseItem('Self Makeup', c2, () {
-                  }),
+                  buildCourseItem('Self Makeup', c2, () {}),
                 ],
               ),
             ),

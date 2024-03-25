@@ -1,20 +1,19 @@
-import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
-import 'package:murarkey/features/home/screens/featured_screens.dart';
 import 'package:murarkey/features/home/services/build_courses.dart';
 import 'package:murarkey/features/home/services/build_product.dart';
+import 'package:murarkey/features/home/services/build_service.dart';
+import 'package:murarkey/features/home/services/featured_services.dart';
+import 'package:murarkey/features/home/services/slider_services.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/features/home/widgets/home_icons.dart';
 import 'package:murarkey/features/home/widgets/image_gallery.dart';
 // import 'package:murarkey/features/home/widgets/image_gallery.dart';
 import 'package:murarkey/features/home/widgets/search_bar.dart';
-import 'package:murarkey/features/home/widgets/slider_screen.dart';
 import 'package:murarkey/res/colors.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class Homescreen extends StatelessWidget {
@@ -23,8 +22,6 @@ class Homescreen extends StatelessWidget {
 
   Homescreen({Key});
   String? _username;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +145,7 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            // Container(child: Carousel()),
+            CarouselSliderPage(),
             const SizedBox(
               height: 30,
             ),
@@ -187,37 +184,37 @@ class Homescreen extends StatelessWidget {
               height: 10,
             ),
 
-            // Padding(
-            //   padding: const EdgeInsets.all(10.0),
-            //   child: Row(
-            //     children: [
-            //       buildServiceItem(
-            //         'Hairstyling',
-            //         'Rs. 1000',
-            //         f1,
-            //       ),
-            //       const SizedBox(width: 6.0),
-            //       buildServiceItem(
-            //         'Bridal Makeup with\nhairstyle',
-            //         'Rs. 1000',
-            //         f2,
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  buildServiceItem(
+                    'Hairstyling',
+                    'Rs. 1000',
+                    f1,
+                  ),
+                  const SizedBox(width: 6.0),
+                  buildServiceItem(
+                    'Bridal Makeup with\nhairstyle',
+                    'Rs. 1000',
+                    f2,
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 1),
-            // const Featuredscreen(),
-            // Padding(
-            //   padding: const EdgeInsets.all(10.0),
-            //   child: Row(
-            //     children: [
-            //       buildServiceItem('Makeup', 'Rs. 1000', f3),
-            //       const SizedBox(width: 6.0),
-            //       buildServiceItem(
-            //           'Bridal Makeup with\nhairstyle', 'Rs. 1000', f4),
-            //     ],
-            //   ),
-            // ),
+            Container( child: FeaturedServices()),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  buildServiceItem('Makeup', 'Rs. 1000', f3),
+                  const SizedBox(width: 6.0),
+                  buildServiceItem(
+                      'Bridal Makeup with\nhairstyle', 'Rs. 1000', f4),
+                ],
+              ),
+            ),
             const SizedBox(
               height: 15,
             ),
@@ -455,13 +452,11 @@ class Homescreen extends StatelessWidget {
               child: Row(
                 children: [
                   buildCourseItem('Self Makeup', c2, () {
-                  Navigator.pushNamed(context, RoutesName.coursetwo);
-
+                    Navigator.pushNamed(context, RoutesName.coursetwo);
                   }),
                   const SizedBox(width: 10.0),
                   buildCourseItem('Self Makeup', c2, () {
-                  Navigator.pushNamed(context, RoutesName.coursetwo);
-
+                    Navigator.pushNamed(context, RoutesName.coursetwo);
                   }),
                 ],
               ),

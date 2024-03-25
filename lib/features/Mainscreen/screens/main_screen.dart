@@ -15,7 +15,7 @@ class Mainscreen extends StatelessWidget {
     return Scaffold(
       body: _getWidgetForIndex(context),
       bottomNavigationBar: ClipPath(
-        clipper: BNBCustomClipper(),
+        // clipper: BNBCustomClipper(),
         child: Container(
           decoration: const BoxDecoration(
             border: Border(

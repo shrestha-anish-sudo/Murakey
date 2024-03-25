@@ -218,7 +218,7 @@ class SignUp extends StatelessWidget {
                       if (_formKey.currentState!.validate()) {
                         print("mydata");
                         Map data = {
-                          'Full Name': _nameController.text,
+                          'fullName': _nameController.text,
                           'phoneNumber': _phoneController.text,
                           'password': _passwordController.text,
                           'confirmPassword': _confirmPasswordController.text,
