@@ -79,7 +79,7 @@ class Mainscreen extends StatelessWidget {
       case 1:
         return Coursescreen();
       case 2:
-        return CartScreen();
+        return CartSection();
       case 3:
         return ProfileScreen();
       default:

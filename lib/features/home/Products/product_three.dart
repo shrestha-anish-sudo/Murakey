@@ -6,8 +6,8 @@ import 'package:murarkey/features/home/widgets/back_arrow.dart';
 import 'package:murarkey/res/Colors.dart';
 import 'package:provider/provider.dart';
 
-class Productone extends StatelessWidget {
-  const Productone({Key? key}) : super(key: key);
+class Productthree extends StatelessWidget {
+  const Productthree({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Productone extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Stack(
@@ -31,7 +31,7 @@ class Productone extends StatelessWidget {
                         border: Border.all(color: AppColor.white),
                       ),
                       child: Image.asset(
-                        p1,
+                        p3,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -72,10 +72,10 @@ class Productone extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Row(
+                      Row(
                         children: [
                           Text(
-                            'Nail Extension',
+                            'Mani-Pedi',
                             style: TextStyle(
                               fontSize: 16,
                               color: AppColor.lightPurple,
@@ -247,19 +247,19 @@ class Productone extends StatelessWidget {
                               ),
                               child: Text('Add to Cart'),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            InkWell(
+                            const InkWell(
                               child: Icon(
                                 Icons.favorite_outline,
                                 size: 10,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 2,
                             ),
-                            Icon(
+                            const Icon(
                               Icons.share,
                               size: 10,
                             )

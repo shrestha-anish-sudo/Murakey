@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
-import 'package:murarkey/features/Cart/Screens/Cart_screen.dart';
+import 'package:murarkey/features/Cart/Screens/cart_screen.dart';
 import 'package:murarkey/features/Category/Screens/category_screen.dart';
 import 'package:murarkey/features/Category/Screens/course1.dart';
 import 'package:murarkey/features/Category/Screens/course2.dart';
@@ -26,7 +26,7 @@ class Routes {
       case RoutesName.login:
         return _pageRoute(LoginScreen());
       case RoutesName.cart:
-        return _pageRoute(const CartScreen());
+        return _pageRoute(CartSection());
       case RoutesName.services:
         return _pageRoute(const ProfileScreen());
       case RoutesName.signup:
@@ -54,7 +54,7 @@ class Routes {
       case RoutesName.home1:
         return _pageRoute(Homescreen1());
       case RoutesName.naill:
-        return _pageRoute(const Productone());
+        return _pageRoute(Productone());
 
       // case RoutesName.mainscreen:
       // return _pageRoute(Mainscreen());

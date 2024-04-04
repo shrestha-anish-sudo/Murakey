@@ -1,7 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:murarkey/Utils/Routes/Routes_name.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
+import 'package:murarkey/features/Cart/provider/cart_provider.dart';
+import 'package:murarkey/features/home/Products/product_one.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
 import 'package:murarkey/features/home/services/build_courses.dart';
 import 'package:murarkey/features/home/services/build_product.dart';
@@ -24,6 +27,7 @@ class Homescreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeTabProvider = Provider.of<TabSelectionNotifier>(context);
+    final cartitem = Provider.of<CartProvider>(context);
 
     return Scaffold(
         body: SafeArea(
@@ -110,10 +114,7 @@ class Homescreen1 extends StatelessWidget {
                           ),
                           Tab(
                             child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, RoutesName.category);
-                              },
+                              onTap: () {},
                               child: Text(
                                 'Category',
                                 style: TextStyle(
@@ -279,7 +280,8 @@ class Homescreen1 extends StatelessWidget {
                 children: [
                   buildProductItem(context, 'Nail Extension', p1, 'Popular',
                       () {
-                    Navigator.pushNamed(context, RoutesName.nail);
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => Productone()));
                   }),
                   buildProductItem(
                       context, 'Mani-Pedi', p2, 'Top Rated', () {}),
