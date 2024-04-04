@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:murarkey/Data/Network/base_api_services.dart';
 import 'package:murarkey/Data/Network/network_api_services.dart';
 import 'package:murarkey/features/auth/model/user_model.dart';
@@ -28,8 +27,7 @@ class AuthRepository {
 
   Future<void> forgotPassword(dynamic data) async {
     try {
-      dynamic response =
-      await _apiServices.getPostApiResponse(
+      dynamic response = await _apiServices.getPostApiResponse(
           AppUrl.forgotPasswordEndpoint, data);
       return response;
     } catch (e) {

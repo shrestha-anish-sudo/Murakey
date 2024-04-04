@@ -146,7 +146,7 @@ class SignUp extends StatelessWidget {
                       controller: _passwordController,
                       decoration: InputDecoration(
                         hintText: 'Enter your password',
-                        prefixIcon: Icon(Icons.security_outlined),
+                        prefixIcon: const Icon(Icons.security_outlined),
                         suffixIcon: InkWell(
                           onTap: () {
                             passwordVisibilityNotifier

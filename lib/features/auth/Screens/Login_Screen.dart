@@ -178,7 +178,7 @@ class LoginScreen extends StatelessWidget {
                     if (_formKey.currentState!.validate()) {
                       print("mydata");
                       Map data = {
-                        'phoneNumber': _phoneController.text,
+                        'mobile': _phoneController.text,
                         'password': _passwordController.text,
                       };
                       authview.loginApi(data, context).then((value) {
