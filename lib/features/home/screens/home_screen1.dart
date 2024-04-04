@@ -279,7 +279,7 @@ class Homescreen1 extends StatelessWidget {
                 children: [
                   buildProductItem(context, 'Nail Extension', p1, 'Popular',
                       () {
-                    Navigator.pushNamed(context, RoutesName.naill);
+                    Navigator.pushNamed(context, RoutesName.nail);
                   }),
                   buildProductItem(
                       context, 'Mani-Pedi', p2, 'Top Rated', () {}),
