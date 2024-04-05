@@ -14,18 +14,14 @@ import 'package:murarkey/features/home/widgets/image_gallery.dart';
 // import 'package:murarkey/features/home/widgets/image_gallery.dart';
 import 'package:murarkey/features/home/widgets/search_bar.dart';
 import 'package:murarkey/res/colors.dart';
-import 'package:provider/provider.dart';
 
 class Homescreen extends StatelessWidget {
   CarouselController buttonCarouselController = CarouselController();
-  CarouselController _carouselController = CarouselController();
-
   Homescreen({Key});
-  String? _username;
+
 
   @override
   Widget build(BuildContext context) {
-    final homeTabProvider = Provider.of<TabSelectionNotifier>(context);
 
     return Scaffold(
         body: SafeArea(
@@ -80,61 +76,61 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DefaultTabController(
-                length: 2,
-                child: Container(
-                  child: Consumer<TabSelectionNotifier>(
-                    builder: (context, hometabProvider, _) {
-                      return TabBar(
-                        indicatorColor: AppColor.lightPurple,
-                        indicatorWeight: 3.0,
-                        indicatorPadding: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                        onTap: (index) {
-                          // Update the selected index when a tab is tapped
-                          context
-                              .read<TabSelectionNotifier>()
-                              .setTabIndex(index);
-                        },
-                        tabs: [
-                          Tab(
-                            child: Text(
-                              'Home',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: hometabProvider.selectedIndex == 0
-                                    ? Colors.black
-                                    : Colors.grey,
-                              ),
-                            ),
-                          ),
-                          Tab(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, RoutesName.category);
-                              },
-                              child: Text(
-                                'Category',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: hometabProvider.selectedIndex == 1
-                                      ? Colors.black
-                                      : Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: DefaultTabController(
+            //     length: 2,
+            //     child: Container(
+            //       child: Consumer<TabSelectionNotifier>(
+            //         builder: (context, hometabProvider, _) {
+            //           return TabBar(
+            //             indicatorColor: AppColor.lightPurple,
+            //             indicatorWeight: 3.0,
+            //             indicatorPadding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+            //             onTap: (index) {
+            //               // Update the selected index when a tab is tapped
+            //               context
+            //                   .read<TabSelectionNotifier>()
+            //                   .setTabIndex(index);
+            //             },
+            //             tabs: [
+            //               Tab(
+            //                 child: Text(
+            //                   'Home',
+            //                   style: TextStyle(
+            //                     fontSize: 18,
+            //                     fontWeight: FontWeight.bold,
+            //                     color: hometabProvider.selectedIndex == 0
+            //                         ? Colors.black
+            //                         : Colors.grey,
+            //                   ),
+            //                 ),
+            //               ),
+            //               Tab(
+            //                 child: InkWell(
+            //                   onTap: () {
+            //                     Navigator.pushNamed(
+            //                         context, RoutesName.category);
+            //                   },
+            //                   child: Text(
+            //                     'Category',
+            //                     style: TextStyle(
+            //                       fontSize: 18,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: hometabProvider.selectedIndex == 1
+            //                           ? Colors.black
+            //                           : Colors.grey,
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           );
+            //         },
+            //       ),
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
               height: 15,
             ),
@@ -203,7 +199,7 @@ class Homescreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 1),
-            Container( child: FeaturedServices()),
+            // SizedBox(child: FeaturedServices()),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Row(
@@ -278,16 +274,21 @@ class Homescreen extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  buildProductItem(
-                      context, 'Nail Extension', p1, 'Popular', () {}),
-                  buildProductItem(
-                      context, 'Mani-Pedi', p2, 'Top Rated', () {}),
+                  buildProductItem(context, 'Nail Extension', p1, 'Popular',
+                      () {
+                    Navigator.pushNamed(context, RoutesName.naill);
+                  }),
+                  buildProductItem(context, 'Mani-Pedi', p2, 'Top Rated', () {
+                    Navigator.pushNamed(context, RoutesName.mani);
+                  }),
                   buildProductItem(
                     context,
                     'Waxing',
                     p3,
                     'Top Rated',
-                    () {},
+                    () {
+                      Navigator.pushNamed(context, RoutesName.wax);
+                    },
                   ),
                 ],
               ),

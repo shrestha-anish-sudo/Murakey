@@ -175,22 +175,23 @@ class LoginScreen extends StatelessWidget {
                   title: 'Login',
                   loading: authview.loading,
                   onPress: () {
-                    if (_formKey.currentState!.validate()) {
-                      print("mydata");
-                      Map data = {
-                        'phoneNumber': _phoneController.text,
-                        'password': _passwordController.text,
-                      };
-                      authview.loginApi(data, context).then((value) {
-                        if (authview.isLoggedIn) {
-                          Navigator.pushNamed(context, RoutesName.mainscreen);
-                        } else {
-                          Utils.flushBarErrorMessage('Login failed', context);
-                        }
-                      }).catchError((error) {
-                        Utils.flushBarErrorMessage(error.toString(), context);
-                      });
-                    }
+                    Navigator.pushNamed(context, RoutesName.mainscreen);
+                    // if (_formKey.currentState!.validate()) {
+                    //   print("mydata");
+                    //   Map data = {
+                    //     'phoneNumber': _phoneController.text,
+                    //     'password': _passwordController.text,
+                    //   };
+                    //   authview.loginApi(data, context).then((value) {
+                    //     if (authview.isLoggedIn) {
+                    //       Navigator.pushNamed(context, RoutesName.mainscreen);
+                    //     } else {
+                    //       Utils.flushBarErrorMessage('Login failed', context);
+                    //     }
+                    //   }).catchError((error) {
+                    //     Utils.flushBarErrorMessage(error.toString(), context);
+                    //   });
+                    // }
                   },
                 ),
                 const SizedBox(height: 30),

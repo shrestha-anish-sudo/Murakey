@@ -48,6 +48,8 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => FormProvider()),
           ChangeNotifierProvider(create: (_) => TabSelectionNotifier()),
           ChangeNotifierProvider(create: (_) => UserProvider()),
+          ChangeNotifierProvider(create: (_) => QuantityModel()),
+          ChangeNotifierProvider(create: (_) => Quantityprovider())
 
           // Add other providers as needed
         ],

@@ -12,6 +12,8 @@ class Productone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartitem = Provider.of<CartProvider>(context, listen: false);
+    QuantityModel quantityModel = Provider.of<QuantityModel>(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -52,7 +54,7 @@ class Productone extends StatelessWidget {
                 height: 0.5,
               ),
               Container(
-                width: 380,
+                width: 360,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -77,35 +79,35 @@ class Productone extends StatelessWidget {
                           Text(
                             'Nail Extension',
                             style: TextStyle(
-                              fontSize: 16,
-                              color: AppColor.lightPurple,
-                            ),
+                                fontSize: 16,
+                                color: AppColor.lightPurple,
+                                fontWeight: FontWeight.bold),
                           ),
                           SizedBox(
-                            width: 30,
+                            width: 20,
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           SizedBox(
-                            width: 5,
+                            width: 2,
                           ),
                           Text(
                             '4.4(32 reviews)',
@@ -135,7 +137,7 @@ class Productone extends StatelessWidget {
                                 TextStyle(fontSize: 12, color: AppColor.gray),
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 20,
                           ),
                           Container(
                             padding: const EdgeInsets.symmetric(
@@ -157,44 +159,44 @@ class Productone extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      height: 30,
-                                      width: 30,
+                                      height: 25,
+                                      width: 25,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.rectangle,
                                         color: AppColor.gray,
                                       ),
                                       child: IconButton(
                                         onPressed: () {
-                                          // Handle decrement quantity
+                                          quantityModel.decrement();
                                         },
                                         icon: const Icon(
                                           Icons.remove,
                                           color: Colors.black,
-                                          size: 20,
+                                          size: 10,
                                         ),
                                       ),
                                     ),
                                     const SizedBox(width: 8),
-                                    const Text(
-                                      '1',
+                                    Text(
+                                      '${quantityModel.quantity}',
                                       style: TextStyle(fontSize: 16.0),
                                     ),
                                     const SizedBox(width: 8),
                                     Container(
-                                      height: 30,
-                                      width: 30,
+                                      height: 25,
+                                      width: 25,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.rectangle,
                                         color: AppColor.lightPurple,
                                       ),
                                       child: IconButton(
                                         onPressed: () {
-                                          // Handle increment quantity
+                                          quantityModel.increment();
                                         },
                                         icon: const Icon(
                                           Icons.add,
                                           color: Colors.white,
-                                          size: 20,
+                                          size: 10,
                                         ),
                                       ),
                                     ),
@@ -312,6 +314,9 @@ class Productone extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 50,
+              )
             ],
           ),
         ),

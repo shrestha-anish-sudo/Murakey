@@ -12,6 +12,8 @@ class Producttwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartitem = Provider.of<CartProvider>(context, listen: false);
+        QuantityModel quantityModel = Provider.of<QuantityModel>(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -86,22 +88,22 @@ class Producttwo extends StatelessWidget {
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           Icon(
                             Icons.star,
-                            color: Colors.yellowAccent,
+                            color: Colors.yellow,
                             size: 20,
                           ),
                           SizedBox(
@@ -144,7 +146,7 @@ class Producttwo extends StatelessWidget {
                               border: Border.all(color: Colors.grey),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            child: Row(
+                            child:  Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text(
@@ -157,44 +159,44 @@ class Producttwo extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      height: 30,
-                                      width: 30,
+                                      height: 25,
+                                      width: 25,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.rectangle,
                                         color: AppColor.gray,
                                       ),
                                       child: IconButton(
                                         onPressed: () {
-                                          // Handle decrement quantity
+                                          quantityModel.decrement();
                                         },
                                         icon: const Icon(
                                           Icons.remove,
                                           color: Colors.black,
-                                          size: 20,
+                                          size: 10,
                                         ),
                                       ),
                                     ),
                                     const SizedBox(width: 8),
-                                    const Text(
-                                      '1',
+                                    Text(
+                                      '${quantityModel.quantity}',
                                       style: TextStyle(fontSize: 16.0),
                                     ),
                                     const SizedBox(width: 8),
                                     Container(
-                                      height: 30,
-                                      width: 30,
+                                      height: 25,
+                                      width: 25,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.rectangle,
                                         color: AppColor.lightPurple,
                                       ),
                                       child: IconButton(
                                         onPressed: () {
-                                          // Handle increment quantity
+                                          quantityModel.increment();
                                         },
                                         icon: const Icon(
                                           Icons.add,
                                           color: Colors.white,
-                                          size: 20,
+                                          size: 10,
                                         ),
                                       ),
                                     ),
@@ -239,7 +241,7 @@ class Producttwo extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () {
-                                cartitem.addToCart('Nail Extension');
+                                cartitem.addToCart('Mani-Pedi');
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: AppColor
