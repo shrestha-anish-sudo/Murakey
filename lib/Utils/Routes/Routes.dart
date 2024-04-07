@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:murarkey/Utils/Routes/Routes_name.dart';
-import 'package:murarkey/features/Cart/Screens/Cart_screen.dart';
+import 'package:murarkey/features/Cart/Screens/cart_screen.dart';
 import 'package:murarkey/features/Category/Screens/category_screen.dart';
 import 'package:murarkey/features/Category/Screens/course1.dart';
 import 'package:murarkey/features/Category/Screens/course2.dart';
@@ -13,8 +13,13 @@ import 'package:murarkey/features/auth/Screens/otp_screen.dart';
 import 'package:murarkey/features/auth/Screens/password_changed.dart';
 import 'package:murarkey/features/auth/Screens/welcome_screen.dart';
 import 'package:murarkey/features/auth/splash/splash_screen.dart';
+import 'package:murarkey/features/home/Products/product_one.dart';
+import 'package:murarkey/features/home/Products/product_three.dart';
+import 'package:murarkey/features/home/Products/product_two.dart';
+import 'package:murarkey/features/home/screens/courses_screen.dart';
 import 'package:murarkey/features/home/screens/home_screen1.dart';
 import 'package:murarkey/features/home/screens/home_screens.dart';
+import 'package:murarkey/features/home/screens/notification_screen.dart';
 import 'package:murarkey/features/profile/screens/Profile_screens.dart';
 
 class Routes {
@@ -25,7 +30,7 @@ class Routes {
       case RoutesName.login:
         return _pageRoute(LoginScreen());
       case RoutesName.cart:
-        return _pageRoute(const CartScreen());
+        return _pageRoute(CartSection());
       case RoutesName.services:
         return _pageRoute(const ProfileScreen());
       case RoutesName.signup:
@@ -51,7 +56,17 @@ class Routes {
       case RoutesName.mainscreen:
         return _pageRoute(const Mainscreen());
       case RoutesName.home1:
-        return _pageRoute( Homescreen1());
+        return _pageRoute(Homescreen1());
+      case RoutesName.naill:
+        return _pageRoute(Productone());
+      case RoutesName.mani:
+        return _pageRoute(Producttwo());
+      case RoutesName.wax:
+        return _pageRoute(Productthree());
+      case RoutesName.notification:
+        return _pageRoute(Notifyscreen());
+      case RoutesName.courses:
+        return _pageRoute(AvailableCourse());
 
       // case RoutesName.mainscreen:
       // return _pageRoute(Mainscreen());

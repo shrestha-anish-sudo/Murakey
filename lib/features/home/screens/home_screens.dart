@@ -1,35 +1,27 @@
-import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
-import 'package:murarkey/features/home/provider/home_provider.dart';
-import 'package:murarkey/features/home/screens/featured_screens.dart';
 import 'package:murarkey/features/home/services/build_courses.dart';
 import 'package:murarkey/features/home/services/build_product.dart';
+import 'package:murarkey/features/home/services/build_service.dart';
+import 'package:murarkey/features/home/services/slider_services.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/features/home/widgets/home_icons.dart';
 import 'package:murarkey/features/home/widgets/image_gallery.dart';
 // import 'package:murarkey/features/home/widgets/image_gallery.dart';
 import 'package:murarkey/features/home/widgets/search_bar.dart';
-import 'package:murarkey/features/home/widgets/slider_screen.dart';
 import 'package:murarkey/res/colors.dart';
-import 'package:http/http.dart' as http;
-import 'package:provider/provider.dart';
 
 class Homescreen extends StatelessWidget {
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
   CarouselController buttonCarouselController = CarouselController();
-  CarouselController _carouselController = CarouselController();
-
   Homescreen({Key});
-  String? _username;
-
-
 
   @override
   Widget build(BuildContext context) {
-    final homeTabProvider = Provider.of<TabSelectionNotifier>(context);
-
     return Scaffold(
         body: SafeArea(
       child: SingleChildScrollView(
@@ -38,7 +30,7 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -62,82 +54,86 @@ class Homescreen extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Let's pamper yourself",
                         style: TextStyle(color: AppColor.gray),
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                     width: 70,
                   ),
-                  HomeIcon(iconData: Icons.person_outline),
-                  SizedBox(
+                  const HomeIcon(iconData: Icons.person_outline),
+                  const SizedBox(
                     width: 10,
                   ),
-                  HomeIcon(iconData: Icons.notifications_none),
+                  InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, RoutesName.notification);
+                      },
+                      child: const HomeIcon(iconData: Icons.notifications_none)),
                 ],
               ),
             ),
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DefaultTabController(
-                length: 2,
-                child: Container(
-                  child: Consumer<TabSelectionNotifier>(
-                    builder: (context, hometabProvider, _) {
-                      return TabBar(
-                        indicatorColor: AppColor.lightPurple,
-                        indicatorWeight: 3.0,
-                        indicatorPadding: EdgeInsets.fromLTRB(50, 0, 50, 0),
-                        onTap: (index) {
-                          // Update the selected index when a tab is tapped
-                          context
-                              .read<TabSelectionNotifier>()
-                              .setTabIndex(index);
-                        },
-                        tabs: [
-                          Tab(
-                            child: Text(
-                              'Home',
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: hometabProvider.selectedIndex == 0
-                                    ? Colors.black
-                                    : Colors.grey,
-                              ),
-                            ),
-                          ),
-                          Tab(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.pushNamed(
-                                    context, RoutesName.category);
-                              },
-                              child: Text(
-                                'Category',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: hometabProvider.selectedIndex == 1
-                                      ? Colors.black
-                                      : Colors.grey,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: DefaultTabController(
+            //     length: 2,
+            //     child: Container(
+            //       child: Consumer<TabSelectionNotifier>(
+            //         builder: (context, hometabProvider, _) {
+            //           return TabBar(
+            //             indicatorColor: AppColor.lightPurple,
+            //             indicatorWeight: 3.0,
+            //             indicatorPadding: EdgeInsets.fromLTRB(50, 0, 50, 0),
+            //             onTap: (index) {
+            //               // Update the selected index when a tab is tapped
+            //               context
+            //                   .read<TabSelectionNotifier>()
+            //                   .setTabIndex(index);
+            //             },
+            //             tabs: [
+            //               Tab(
+            //                 child: Text(
+            //                   'Home',
+            //                   style: TextStyle(
+            //                     fontSize: 18,
+            //                     fontWeight: FontWeight.bold,
+            //                     color: hometabProvider.selectedIndex == 0
+            //                         ? Colors.black
+            //                         : Colors.grey,
+            //                   ),
+            //                 ),
+            //               ),
+            //               Tab(
+            //                 child: InkWell(
+            //                   onTap: () {
+            //                     Navigator.pushNamed(
+            //                         context, RoutesName.category);
+            //                   },
+            //                   child: Text(
+            //                     'Category',
+            //                     style: TextStyle(
+            //                       fontSize: 18,
+            //                       fontWeight: FontWeight.bold,
+            //                       color: hometabProvider.selectedIndex == 1
+            //                           ? Colors.black
+            //                           : Colors.grey,
+            //                     ),
+            //                   ),
+            //                 ),
+            //               ),
+            //             ],
+            //           );
+            //         },
+            //       ),
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
               height: 15,
             ),
@@ -148,7 +144,7 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            // Container(child: Carousel()),
+            CarouselSliderPage(),
             const SizedBox(
               height: 30,
             ),
@@ -187,37 +183,32 @@ class Homescreen extends StatelessWidget {
               height: 10,
             ),
 
-            // Padding(
-            //   padding: const EdgeInsets.all(10.0),
-            //   child: Row(
-            //     children: [
-            //       buildServiceItem(
-            //         'Hairstyling',
-            //         'Rs. 1000',
-            //         f1,
-            //       ),
-            //       const SizedBox(width: 6.0),
-            //       buildServiceItem(
-            //         'Bridal Makeup with\nhairstyle',
-            //         'Rs. 1000',
-            //         f2,
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  buildServiceItem('Hairstyling', 'Rs. 1000', f1,
+                      Icons.favorite_outline, () {}),
+                  const SizedBox(width: 6.0),
+                  buildServiceItem('Bridal Makeup with\nhairstyle', 'Rs. 1000',
+                      f2, Icons.favorite_outline, () {}),
+                ],
+              ),
+            ),
             const SizedBox(height: 1),
-            // const Featuredscreen(),
-            // Padding(
-            //   padding: const EdgeInsets.all(10.0),
-            //   child: Row(
-            //     children: [
-            //       buildServiceItem('Makeup', 'Rs. 1000', f3),
-            //       const SizedBox(width: 6.0),
-            //       buildServiceItem(
-            //           'Bridal Makeup with\nhairstyle', 'Rs. 1000', f4),
-            //     ],
-            //   ),
-            // ),
+            // SizedBox(child: FeaturedServices()),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  buildServiceItem(
+                      'Makeup', 'Rs. 1000', f3, Icons.favorite_outline, () {}),
+                  const SizedBox(width: 6.0),
+                  buildServiceItem('Bridal Makeup with\nhairstyle', 'Rs. 1000',
+                      f4, Icons.favorite_outline, () {}),
+                ],
+              ),
+            ),
             const SizedBox(
               height: 15,
             ),
@@ -235,66 +226,40 @@ class Homescreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 15,
+              height: 10,
             ),
-
-            // Padding(
-            //   padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-            //   child: Container(
-            //     height: 276,
-            //     child: Column(
-            //       children: [
-            //         CarouselSlider(
-            //           carouselController: _carouselController,
-            //           options: CarouselOptions(
-            //             height: 275.0,
-            //             enlargeCenterPage: false,
-            //             autoPlay: false, // Set to true if you want auto-play
-            //             aspectRatio: 16 / 9,
-            //             autoPlayCurve: Curves.fastOutSlowIn,
-            //             enableInfiniteScroll: false,
-            //             autoPlayAnimationDuration: Duration(milliseconds: 800),
-            //             viewportFraction: 0.4,
-            //           ),
-            //           items: [
-            //             buildProductItem(
-            //                 context, 'Nail Extension', p1, 'Popular', () {}),
-            //             buildProductItem(
-            //                 context, 'Mani-Pedi', p2, 'Top Rated', () {}),
-            //             buildProductItemWithButton(
-            //               context,
-            //               'Waxing',
-            //               p3,
-            //               'Top Rated',
-            //               () {},
-            //             ),
-            //           ],
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-
-            Container(
-              height: 276,
-              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Row(
                 children: [
-                  buildProductItem(
-                      context, 'Nail Extension', p1, 'Popular', () {}),
-                  buildProductItem(
-                      context, 'Mani-Pedi', p2, 'Top Rated', () {}),
+                  buildProductItem(context, 'Nail Extension', p1, 'Popular',
+                      () {
+                    Navigator.pushNamed(context, RoutesName.naill);
+                  }),
+                  const SizedBox(width: 6.0),
+                  buildProductItem(context, 'Mani-Pedi', p2, 'Top Rated', () {
+                    Navigator.pushNamed(context, RoutesName.mani);
+                  }),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Row(
+                children: [
                   buildProductItem(
                     context,
                     'Waxing',
                     p3,
                     'Top Rated',
-                    () {},
+                    () {
+                      Navigator.pushNamed(context, RoutesName.wax);
+                    },
                   ),
                 ],
               ),
             ),
+
             const SizedBox(
               height: 40,
             ),
@@ -455,13 +420,11 @@ class Homescreen extends StatelessWidget {
               child: Row(
                 children: [
                   buildCourseItem('Self Makeup', c2, () {
-                  Navigator.pushNamed(context, RoutesName.coursetwo);
-
+                    Navigator.pushNamed(context, RoutesName.coursetwo);
                   }),
                   const SizedBox(width: 10.0),
                   buildCourseItem('Self Makeup', c2, () {
-                  Navigator.pushNamed(context, RoutesName.coursetwo);
-
+                    Navigator.pushNamed(context, RoutesName.coursetwo);
                   }),
                 ],
               ),
@@ -506,13 +469,13 @@ class Homescreen extends StatelessWidget {
               height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.all(18),
-              child: Container(
+                padding: const EdgeInsets.all(18),
+                child: Container(
                   decoration:
                       BoxDecoration(border: Border.all(color: Colors.white)),
                   height: 240,
-                  child: ImageGridView()),
-            ),
+                  child: ImageGridView(),
+                )),
             const SizedBox(
               height: 20,
             ),

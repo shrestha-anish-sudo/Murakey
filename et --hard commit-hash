@@ -1,0 +1,223 @@
+[33mcommit 5fb1b1fc5bc4f2b755ac0c7f56bc7d67bbb4ec9d[m[33m ([m[1;36mHEAD -> [m[1;32mnew-branch[m[33m)[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Mon Mar 25 15:20:12 2024 +0545
+
+    Merge new-branch into main
+
+[33mcommit f2d6f741ecee2cf70ac3e32c080de2810b9b825b[m[33m ([m[1;32mmain[m[33m)[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Fri Mar 22 12:24:36 2024 +0545
+
+    'aks'
+
+[33mcommit 3d422dd8a3b01ab834ef545e3a583331f6150b76[m[33m ([m[1;31morigin/new-branch[m[33m)[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Fri Mar 22 11:32:44 2024 +0545
+
+    'home'
+
+[33mcommit 51c5d564d85bb546fc798ca8a62d60f64d53242e[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Thu Mar 21 18:03:32 2024 +0545
+
+    'login'
+
+[33mcommit 379a2fdec65bb919c298d9bbe636a9a007de1b22[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Mar 19 17:44:22 2024 +0545
+
+    'validation'
+
+[33mcommit 9ecd2c32f59500583c7b839dd635bba3d9fb9221[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Sun Mar 17 16:57:47 2024 +0545
+
+    'navbar'
+
+[33mcommit 41381f0aa7fc6e9b73393e7230e60452ba658def[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Sun Mar 17 14:56:50 2024 +0545
+
+    'navbar'
+
+[33mcommit 7e9f438b7ea7f9c58a52a35ff9c5cd03a4942a73[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Fri Mar 15 14:11:24 2024 +0545
+
+    'password'
+
+[33mcommit 713d55344de86739e2e634b8355a7f488e9ddcb8[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Mar 12 11:17:51 2024 +0545
+
+    fix: pubsec lock
+
+[33mcommit 8ef3ab9925d4121514940bb5590d165e5c32cf63[m
+Merge: 58dde6e e9068ca
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Mar 12 11:15:45 2024 +0545
+
+    Merge branch 'main' of https://github.com/shrestha-anish-sudo/Murakey
+
+[33mcommit 58dde6e48d1bdb62400f5a45b2a1a84f4b0e1cfc[m
+Merge: 4ad9b74 da96c7a
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Mar 12 11:15:33 2024 +0545
+
+    Merge branch 'main' of https://github.com/shrestha-anish-sudo/Murakey
+
+[33mcommit e9068cae627b366b2450899eef32b306ceeb4881[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Sun Mar 10 13:37:54 2024 +0545
+
+    'random'
+
+[33mcommit 4ad9b74a6b0aabb7a6958050d614b8dc24636404[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Thu Mar 7 13:45:14 2024 +0545
+
+    'api'
+
+[33mcommit 2e8cd2ff26516e56615eaf2581b64ab6d9786ae7[m[33m ([m[1;31morigin/authscreen[m[33m)[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Wed Mar 6 16:56:50 2024 +0545
+
+    'api'
+
+[33mcommit 12f5a6fd9ee76fefa8526896249f175242904d58[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Mar 5 13:52:50 2024 +0545
+
+    'navbar'
+
+[33mcommit c673e04c5adf035fe785d4344bf9b5cbfb475a9e[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Mon Mar 4 17:58:32 2024 +0545
+
+    'bottom'
+
+[33mcommit 97184af08b2bc8d3a199e88f2ac1630f361dcb2f[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Mon Mar 4 17:10:46 2024 +0545
+
+    'bottom'
+
+[33mcommit fa95fc90827fd05788bf899684f28af4c8c5d1fe[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Mon Mar 4 15:24:34 2024 +0545
+
+    'slider'
+
+[33mcommit 222876b7cafb09604bbdba0895d3c5a70b8b3814[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Fri Mar 1 18:00:33 2024 +0545
+
+    'creatnew'
+
+[33mcommit f9132346757f1d7f85eb90e715f530e6fe34c9bb[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Fri Mar 1 16:28:26 2024 +0545
+
+    createnew
+
+[33mcommit 9cf3f3449d6343a01890c7234d4342efb82a2db1[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Wed Feb 28 17:20:25 2024 +0545
+
+    'screens'
+
+[33mcommit 761ec2e9b9ac0ae369aaa972152d50089247030b[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 27 17:46:22 2024 +0545
+
+    'gallery'
+
+[33mcommit fa3fed3ed6b38bd9854dc1609781db2cedcaa19d[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 27 11:57:35 2024 +0545
+
+    'home'
+
+[33mcommit 97b3e6d94137668b50f81460dfcb18604576ebbb[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Thu Feb 22 12:35:40 2024 +0545
+
+    'changes'
+
+[33mcommit d1899c9f43bf5b595668e5930f51a2e62891218d[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Thu Feb 22 11:32:58 2024 +0545
+
+    'screens'
+
+[33mcommit 55cf9e4910e6c8d15a6a2e63407b8f5b6ed9cbd5[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Wed Feb 21 13:39:46 2024 +0545
+
+    'Screens'
+
+[33mcommit 84fc9a7c70f4af5fc12e4492723b3364e9ec6ca9[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 20 16:58:17 2024 +0545
+
+    'authscreen'
+
+[33mcommit faecf0e80c8f658462bf0856fe4c431874dffdb4[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 20 16:23:30 2024 +0545
+
+    'authscreen'
+
+[33mcommit da96c7a6b2b350e4f30987c91e85a73b11557955[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Sun Feb 18 13:46:47 2024 +0545
+
+    splash
+
+[33mcommit 8272e0b0d71a7f7fd9ab92e83ad3842443a114c1[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Sun Feb 18 06:51:21 2024 +0545
+
+    'radom'
+
+[33mcommit df69e3aee090d6f5a757796b777040301b4ca66c[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Thu Feb 15 20:38:43 2024 +0545
+
+    'validation'
+
+[33mcommit 90c94ab1ad66491e180d4a3d05319abb5f5adc0a[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Thu Feb 15 14:33:11 2024 +0545
+
+    'login'
+
+[33mcommit 6e4ac34bf388be47349406e43ec2b10a0b318c2f[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Wed Feb 14 19:24:45 2024 +0545
+
+    'login'
+
+[33mcommit b76ec3350f42a05b7855f017969418f3642f1125[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 13 17:33:07 2024 +0545
+
+    'lala'
+
+[33mcommit 300efa73b5465c417e4caf9fded87dae6dc2eecc[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 13 16:18:04 2024 +0545
+
+    'random'
+
+[33mcommit cfc75f04f894e5dd8a78d8457826129a3c255902[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 13 12:51:00 2024 +0545
+
+    'api'
+
+[33mcommit ffa56871abc38f9543f000f08a128577d3489aeb[m
+Author: Anish Shrestha <anikshrestha23@gmail.com>
+Date:   Tue Feb 13 12:25:47 2024 +0545
+
+    'commit'

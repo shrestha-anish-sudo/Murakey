@@ -6,7 +6,15 @@ class WishList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            
+            
+            
+          ),
+        ),
+      ),
     );
   }
 }

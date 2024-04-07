@@ -8,7 +8,7 @@ Widget buildProductItem(BuildContext context, String name, String imagePath,
   return Container(
     // height: double.infinity,
 
-    width: 150.0, // Adjust the width as needed
+    height: 240, // Adjust the width as needed
     margin: const EdgeInsets.all(8.0),
     decoration: BoxDecoration(
       border: Border.all(color: Colors.white),
@@ -19,7 +19,8 @@ Widget buildProductItem(BuildContext context, String name, String imagePath,
       children: [
         // Product Image
         Container(
-          height: 150.0, // Set the height as needed
+          height: 140.0,
+          width: 175, // Set the height as needed
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             image: DecorationImage(

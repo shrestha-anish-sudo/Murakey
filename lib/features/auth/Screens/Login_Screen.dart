@@ -175,6 +175,7 @@ class LoginScreen extends StatelessWidget {
                   title: 'Login',
                   loading: authview.loading,
                   onPress: () {
+
                     if (_formKey.currentState!.validate()) {
                       print("mydata");
                       Map data = {
