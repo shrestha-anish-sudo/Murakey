@@ -1,15 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:murarkey/Utils/Routes/Routes_name.dart';
-import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/Cart/provider/cart_provider.dart';
-import 'package:murarkey/features/home/Products/product_one.dart';
 import 'package:murarkey/features/home/provider/home_provider.dart';
 import 'package:murarkey/features/home/services/build_courses.dart';
-import 'package:murarkey/features/home/services/build_product.dart';
 import 'package:murarkey/features/home/services/build_service.dart';
-import 'package:murarkey/features/home/services/slider_services.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/features/home/widgets/home_icons.dart';
 import 'package:murarkey/features/home/widgets/image_gallery.dart';
@@ -188,17 +183,11 @@ class Homescreen1 extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Row(
                 children: [
-                  buildServiceItem(
-                    'Hairstyling',
-                    'Rs. 1000',
-                    f1,
-                  ),
+                  buildServiceItem('Hairstyling', 'Rs. 1000', f1,
+                      Icons.favorite_outline, () {}),
                   const SizedBox(width: 6.0),
-                  buildServiceItem(
-                    'Bridal Makeup with\nhairstyle',
-                    'Rs. 1000',
-                    f2,
-                  ),
+                  buildServiceItem('Bridal Makeup with\nhairstyle', 'Rs. 1000',
+                      f2, Icons.favorite_outline, () {}),
                 ],
               ),
             ),
@@ -208,10 +197,11 @@ class Homescreen1 extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Row(
                 children: [
-                  buildServiceItem('Makeup', 'Rs. 1000', f3),
-                  const SizedBox(width: 6.0),
                   buildServiceItem(
-                      'Bridal Makeup with\nhairstyle', 'Rs. 1000', f4),
+                      'Makeup', 'Rs. 1000', f3, Icons.favorite_outline, () {}),
+                  const SizedBox(width: 6.0),
+                  buildServiceItem('Bridal Makeup with\nhairstyle', 'Rs. 1000',
+                      f4, Icons.favorite_outline, () {}),
                 ],
               ),
             ),
@@ -271,30 +261,51 @@ class Homescreen1 extends StatelessWidget {
             //     ),
             //   ),
             // ),
-
-            Container(
-              height: 276,
-              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
                 children: [
-                  buildProductItem(context, 'Nail Extension', p1, 'Popular',
-                      () {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => Productone()));
-                  }),
-                  buildProductItem(
-                      context, 'Mani-Pedi', p2, 'Top Rated', () {}),
-                  buildProductItem(
-                    context,
-                    'Waxing',
-                    p3,
-                    'Top Rated',
-                    () {},
-                  ),
+                  buildServiceItem('Nail Extension', 'Rs. 1000', p1,
+                      Icons.favorite_outline, () {}),
+                  const SizedBox(width: 6.0),
+                  buildServiceItem('Mani-pedi', 'Rs. 1000', p2,
+                      Icons.favorite_outline, () {}),
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  buildServiceItem(
+                      'Wax', 'Rs. 1000', p3, Icons.favorite_outline, () {}),
+                  const SizedBox(width: 6.0),
+                ],
+              ),
+            ),
+            // Container(
+            //   height: 276,
+            //   padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+            //   child: ListView(
+            //     scrollDirection: Axis.horizontal,
+            //     children: [
+            //       buildProductItem(context, 'Nail Extension', p1, 'Popular',
+            //           () {
+            //         Navigator.of(context).push(
+            //             MaterialPageRoute(builder: (context) => Productone()));
+            //       }),
+            //       buildProductItem(
+            //           context, 'Mani-Pedi', p2, 'Top Rated', () {}),
+            //       buildProductItem(
+            //         context,
+            //         'Waxing',
+            //         p3,
+            //         'Top Rated',
+            //         () {},
+            //       ),
+            //     ],
+            //   ),
+            // ),
             const SizedBox(
               height: 40,
             ),

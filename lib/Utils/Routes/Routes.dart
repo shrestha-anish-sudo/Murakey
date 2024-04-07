@@ -16,8 +16,10 @@ import 'package:murarkey/features/auth/splash/splash_screen.dart';
 import 'package:murarkey/features/home/Products/product_one.dart';
 import 'package:murarkey/features/home/Products/product_three.dart';
 import 'package:murarkey/features/home/Products/product_two.dart';
+import 'package:murarkey/features/home/screens/courses_screen.dart';
 import 'package:murarkey/features/home/screens/home_screen1.dart';
 import 'package:murarkey/features/home/screens/home_screens.dart';
+import 'package:murarkey/features/home/screens/notification_screen.dart';
 import 'package:murarkey/features/profile/screens/Profile_screens.dart';
 
 class Routes {
@@ -61,6 +63,10 @@ class Routes {
         return _pageRoute(Producttwo());
       case RoutesName.wax:
         return _pageRoute(Productthree());
+      case RoutesName.notification:
+        return _pageRoute(Notifyscreen());
+      case RoutesName.courses:
+        return _pageRoute(AvailableCourse());
 
       // case RoutesName.mainscreen:
       // return _pageRoute(Mainscreen());

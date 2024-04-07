@@ -17,11 +17,11 @@ class CartSection extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.all(14.0),
+              const Padding(
+                padding: EdgeInsets.all(14.0),
                 child: Row(
                   children: [
                     Backarrow(),
@@ -124,7 +124,7 @@ class ProductItem extends StatelessWidget {
                         ),
                         child: IconButton(
                           onPressed: () {
-                            Quan.decrement();
+                            
                           },
                           icon: const Icon(
                             Icons.remove,
@@ -133,9 +133,9 @@ class ProductItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 12),
                       Text(
-                        '${Quan.Quantity}',
+                        '1',
                         style: TextStyle(fontSize: 16.0),
                       ),
                       const SizedBox(width: 8),
@@ -148,7 +148,7 @@ class ProductItem extends StatelessWidget {
                         ),
                         child: IconButton(
                           onPressed: () {
-                            Quan.increment();
+                            // Quan.increment();
                           },
                           icon: const Icon(
                             Icons.add,

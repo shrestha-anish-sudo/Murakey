@@ -5,6 +5,8 @@ Widget buildServiceItem(
   String name,
   String price,
   String imagePath,
+  IconData favoriteIcon, // New parameter for favorite icon
+  Function()? onFavoritePressed, // New parameter for onPressed callback
 ) {
   return Expanded(
     child: Container(
@@ -42,17 +44,12 @@ Widget buildServiceItem(
             top: 8.0,
             right: 15.0,
             child: GestureDetector(
-              onTap: () {
-                // favoriteProvider.toggleFavorite(productId);
-              },
-              child: const CircleAvatar(
+              onTap: onFavoritePressed,
+              child: CircleAvatar(
                 radius: 14,
                 backgroundColor: AppColor.white,
                 child: Icon(
-                  Icons.favorite_outline_outlined,
-                  // favoriteProvider.isFavorite(productId)
-                  //     ? Icons.favorite
-                  //     : Icons.favorite_border,
+                  favoriteIcon,
                   color: AppColor.black,
                 ),
               ),
