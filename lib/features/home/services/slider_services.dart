@@ -55,7 +55,7 @@ class _CarouselSliderPageState extends State<CarouselSliderPage> {
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
                     decoration: const BoxDecoration(),
-                    child: Image.network(AppUrl.baseUrl+"/public/slider/"+item.image!, fit: BoxFit.cover),
+                    child: Image.network(AppUrl.baseUrl+"/public/sliders/"+item.image!, fit: BoxFit.cover),
                   );
                 },
               );

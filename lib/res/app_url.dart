@@ -5,5 +5,5 @@ class AppUrl {
   static var forgotPasswordEndpoint = baseUrl + '';
   static var sliderapi = baseUrl + '/api/v1/sliders';
   static var getservices = baseUrl + '/api/v1/services';
-  static var imagegallery = baseUrl + '/api/v1/';
+  static var imagegallery = baseUrl + '/api/v1/gallery';
 }

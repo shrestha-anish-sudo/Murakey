@@ -1,22 +1,19 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:murarkey/Utils/Routes/routes_name.dart';
 import 'package:murarkey/Utils/constant/assets_path.dart';
 import 'package:murarkey/features/home/services/build_courses.dart';
 import 'package:murarkey/features/home/services/build_product.dart';
 import 'package:murarkey/features/home/services/build_service.dart';
+import 'package:murarkey/features/home/services/gallery_services.dart';
 import 'package:murarkey/features/home/services/slider_services.dart';
 import 'package:murarkey/features/home/widgets/home_button.dart';
 import 'package:murarkey/features/home/widgets/home_icons.dart';
-import 'package:murarkey/features/home/widgets/image_gallery.dart';
 // import 'package:murarkey/features/home/widgets/image_gallery.dart';
 import 'package:murarkey/features/home/widgets/search_bar.dart';
 import 'package:murarkey/res/colors.dart';
 
 class Homescreen extends StatelessWidget {
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
   CarouselController buttonCarouselController = CarouselController();
   Homescreen({Key});
 
@@ -72,7 +69,8 @@ class Homescreen extends StatelessWidget {
                       onTap: () {
                         Navigator.pushNamed(context, RoutesName.notification);
                       },
-                      child: const HomeIcon(iconData: Icons.notifications_none)),
+                      child:
+                          const HomeIcon(iconData: Icons.notifications_none)),
                 ],
               ),
             ),
@@ -144,7 +142,7 @@ class Homescreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            CarouselSliderPage(),
+            // CarouselSliderPage(),
             const SizedBox(
               height: 30,
             ),
@@ -261,7 +259,7 @@ class Homescreen extends StatelessWidget {
             ),
 
             const SizedBox(
-              height: 40,
+              height: 10,
             ),
             Row(
               children: [
@@ -471,11 +469,7 @@ class Homescreen extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.all(18),
                 child: Container(
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.white)),
-                  height: 240,
-                  child: ImageGridView(),
-                )),
+                    height: 200, width: 360, child: GalleryService())),
             const SizedBox(
               height: 20,
             ),

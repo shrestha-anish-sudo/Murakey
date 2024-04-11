@@ -9,7 +9,6 @@ Widget buildProductItem(BuildContext context, String name, String imagePath,
     // height: double.infinity,
 
     height: 240, // Adjust the width as needed
-    margin: const EdgeInsets.all(8.0),
     decoration: BoxDecoration(
       border: Border.all(color: Colors.white),
       borderRadius: BorderRadius.circular(8.0),

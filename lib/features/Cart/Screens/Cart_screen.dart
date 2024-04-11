@@ -115,6 +115,9 @@ class ProductItem extends StatelessWidget {
                           color: Colors.red,
                         ),
                       ),
+                      SizedBox(
+                        width: 45,
+                      ),
                       Container(
                         height: 25,
                         width: 25,
@@ -123,9 +126,7 @@ class ProductItem extends StatelessWidget {
                           color: AppColor.gray,
                         ),
                         child: IconButton(
-                          onPressed: () {
-                            
-                          },
+                          onPressed: () {},
                           icon: const Icon(
                             Icons.remove,
                             color: Colors.black,
@@ -133,7 +134,7 @@ class ProductItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 12),
+                      const SizedBox(width: 8),
                       Text(
                         '1',
                         style: TextStyle(fontSize: 16.0),

@@ -13,6 +13,7 @@ class Mainscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: _getWidgetForIndex(context),
       bottomNavigationBar: ClipPath(
